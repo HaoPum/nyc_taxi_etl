@@ -1,0 +1,125 @@
+[2025-10-08T06:43:28.311+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_setup.test_spark_connection manual__2025-10-08T06:43:24.979803+00:00 [queued]>
+[2025-10-08T06:43:28.315+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_setup.test_spark_connection manual__2025-10-08T06:43:24.979803+00:00 [queued]>
+[2025-10-08T06:43:28.315+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-10-08T06:43:28.321+0000] {taskinstance.py:1380} INFO - Executing <Task(BashOperator): test_spark_connection> on 2025-10-08 06:43:24.979803+00:00
+[2025-10-08T06:43:28.324+0000] {standard_task_runner.py:57} INFO - Started process 3703 to run task
+[2025-10-08T06:43:28.326+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'test_setup', 'test_spark_connection', 'manual__2025-10-08T06:43:24.979803+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/test_setup.py', '--cfg-path', '/tmp/tmptib8xtus']
+[2025-10-08T06:43:28.327+0000] {standard_task_runner.py:85} INFO - Job 7: Subtask test_spark_connection
+[2025-10-08T06:43:28.351+0000] {task_command.py:415} INFO - Running <TaskInstance: test_setup.test_spark_connection manual__2025-10-08T06:43:24.979803+00:00 [running]> on host 0e5d01676f0c
+[2025-10-08T06:43:28.385+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='test_setup' AIRFLOW_CTX_TASK_ID='test_spark_connection' AIRFLOW_CTX_EXECUTION_DATE='2025-10-08T06:43:24.979803+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-08T06:43:24.979803+00:00'
+[2025-10-08T06:43:28.386+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-10-08T06:43:28.386+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl -f http://spark-master:8080 || echo "Spark master not reachable"']
+[2025-10-08T06:43:28.390+0000] {subprocess.py:86} INFO - Output:
+[2025-10-08T06:43:28.394+0000] {subprocess.py:93} INFO -   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[2025-10-08T06:43:28.394+0000] {subprocess.py:93} INFO -                                  Dload  Upload   Total   Spent    Left  Speed
+[2025-10-08T06:43:28.478+0000] {subprocess.py:93} INFO -   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<!DOCTYPE html><html>
+[2025-10-08T06:43:28.478+0000] {subprocess.py:93} INFO -       <head>
+[2025-10-08T06:43:28.478+0000] {subprocess.py:93} INFO -         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/static/bootstrap.min.css" type="text/css"/><link rel="stylesheet" href="/static/vis-timeline-graph2d.min.css" type="text/css"/><link rel="stylesheet" href="/static/webui.css" type="text/css"/><link rel="stylesheet" href="/static/timeline-view.css" type="text/css"/><script src="/static/sorttable.js"></script><script src="/static/jquery-3.5.1.min.js"></script><script src="/static/vis-timeline-graph2d.min.js"></script><script src="/static/bootstrap.bundle.min.js"></script><script src="/static/initialize-tooltips.js"></script><script src="/static/table.js"></script><script src="/static/timeline-view.js"></script><script src="/static/log-view.js"></script><script src="/static/webui.js"></script><script>setUIRoot('')</script>
+[2025-10-08T06:43:28.478+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.478+0000] {subprocess.py:93} INFO -         <link rel="shortcut icon" href="/static/spark-logo-77x50px-hd.png"></link>
+[2025-10-08T06:43:28.478+0000] {subprocess.py:93} INFO -         <title>Spark Master at spark://f097889681a4:7077</title>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -       </head>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -       <body>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -         <div class="container-fluid">
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -           <div class="row">
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -             <div class="col-12">
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -               <h3 style="vertical-align: middle; display: inline-block;">
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -                 <a style="text-decoration: none" href="/">
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -                   <img src="/static/spark-logo-77x50px-hd.png"/>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -                   <span class="version" style="margin-right: 15px;">3.5.1</span>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -                 </a>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -                 Spark Master at spark://f097889681a4:7077
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -               </h3>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -             </div>
+[2025-10-08T06:43:28.479+0000] {subprocess.py:93} INFO -           </div>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -           <div class="row">
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -             <div class="col-12">
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <div class="row">
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -           <div class="col-12">
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -             <ul class="list-unstyled">
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <li><strong>URL:</strong> spark://f097889681a4:7077</li>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <li><strong>Alive Workers:</strong> 0</li>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <li><strong>Cores in use:</strong> 0 Total,
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -                 0 Used</li>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <li><strong>Memory in use:</strong>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -                 0.0 B Total,
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -                 0.0 B Used</li>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <li><strong>Resources in use:</strong>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -                 </li>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -               <li><strong>Applications:</strong>
+[2025-10-08T06:43:28.480+0000] {subprocess.py:93} INFO -                 0 <a href="#running-app">Running</a>,
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -                 0 <a href="#completed-app">Completed</a> </li>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -               <li><strong>Drivers:</strong>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -                 0 Running,
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -                 0 Completed </li>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -               <li><strong>Status:</strong> ALIVE</li>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -             </ul>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -           </div>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -         </div><div class="row">
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -           <div class="col-12">
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -             <span class="collapse-aggregated-workers collapse-table" onClick="collapseTable('collapse-aggregated-workers','aggregated-workers')">
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -               <h4>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -                 <span class="collapse-table-arrow arrow-open"></span>
+[2025-10-08T06:43:28.481+0000] {subprocess.py:93} INFO -                 <a>Workers (0)</a>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -               </h4>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -             </span>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -             <div class="aggregated-workers collapsible-table">
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -               <table class="table table-bordered table-sm table-striped sortable">
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -       <thead><th width="" class="">Worker Id</th><th width="" class="">Address</th><th width="" class="">State</th><th width="" class="">Cores</th><th width="" class="">Memory</th><th width="" class="">Resources</th></thead>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -       <tbody>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -       </tbody>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -     </table>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -             </div>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -           </div>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -         </div><div class="row">
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -           <div class="col-12">
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -             <span id="running-app" class="collapse-aggregated-activeApps collapse-table" onClick="collapseTable('collapse-aggregated-activeApps','aggregated-activeApps')">
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -               <h4>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -                 <span class="collapse-table-arrow arrow-open"></span>
+[2025-10-08T06:43:28.482+0000] {subprocess.py:93} INFO -                 <a>Running Applications (0)</a>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -               </h4>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -             </span>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -             <div class="aggregated-activeApps collapsible-table">
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -               <table class="table table-bordered table-sm table-striped sortable">
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -       <thead><th width="" class="">Application ID</th><th width="" class="">Name</th><th width="" class="">Cores</th><th width=""100  5608  100  5608    0     0  67566      0 --:--:-- --:--:-- --:--:-- 67566
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -  class="">Memory per Executor</th><th width="" class="">Resources Per Executor</th><th width="" class="">Submitted Time</th><th width="" class="">User</th><th width="" class="">State</th><th width="" class="">Duration</th></thead>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -       <tbody>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -       </tbody>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -     </table>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -             </div>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -           </div>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -         </div><div>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -         </div><div class="row">
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -           <div class="col-12">
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -             <span id="completed-app" class="collapse-aggregated-completedApps collapse-table" onClick="collapseTable('collapse-aggregated-completedApps',
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -                 'aggregated-completedApps')">
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -               <h4>
+[2025-10-08T06:43:28.483+0000] {subprocess.py:93} INFO -                 <span class="collapse-table-arrow arrow-open"></span>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -                 <a>Completed Applications (0)</a>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -               </h4>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -             </span>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -             <div class="aggregated-completedApps collapsible-table">
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -               <table class="table table-bordered table-sm table-striped sortable">
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -       <thead><th width="" class="">Application ID</th><th width="" class="">Name</th><th width="" class="">Cores</th><th width="" class="">Memory per Executor</th><th width="" class="">Resources Per Executor</th><th width="" class="">Submitted Time</th><th width="" class="">User</th><th width="" class="">State</th><th width="" class="">Duration</th></thead>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -       <tbody>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -       </tbody>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -     </table>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -             </div>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -           </div>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -         </div><div>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO - 
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -         </div>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -             </div>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -           </div>
+[2025-10-08T06:43:28.484+0000] {subprocess.py:93} INFO -         </div>
+[2025-10-08T06:43:28.485+0000] {subprocess.py:93} INFO -       </body>
+[2025-10-08T06:43:28.485+0000] {subprocess.py:93} INFO -     </html>
+[2025-10-08T06:43:28.485+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-10-08T06:43:28.498+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=test_setup, task_id=test_spark_connection, execution_date=20251008T064324, start_date=20251008T064328, end_date=20251008T064328
+[2025-10-08T06:43:28.547+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-08T06:43:28.558+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

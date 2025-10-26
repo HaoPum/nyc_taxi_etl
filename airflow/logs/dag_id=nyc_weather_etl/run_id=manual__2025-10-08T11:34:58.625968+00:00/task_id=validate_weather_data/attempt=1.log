@@ -1,0 +1,14 @@
+[2025-10-08T11:35:01.023+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_weather_etl.validate_weather_data manual__2025-10-08T11:34:58.625968+00:00 [queued]>
+[2025-10-08T11:35:01.026+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_weather_etl.validate_weather_data manual__2025-10-08T11:34:58.625968+00:00 [queued]>
+[2025-10-08T11:35:01.027+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-10-08T11:35:01.032+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): validate_weather_data> on 2025-10-08 11:34:58.625968+00:00
+[2025-10-08T11:35:01.035+0000] {standard_task_runner.py:57} INFO - Started process 5299 to run task
+[2025-10-08T11:35:01.036+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_weather_etl', 'validate_weather_data', 'manual__2025-10-08T11:34:58.625968+00:00', '--job-id', '356', '--raw', '--subdir', 'DAGS_FOLDER/nyc_weather_etl.py', '--cfg-path', '/tmp/tmphgt_wgx2']
+[2025-10-08T11:35:01.038+0000] {standard_task_runner.py:85} INFO - Job 356: Subtask validate_weather_data
+[2025-10-08T11:35:01.150+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_weather_etl.validate_weather_data manual__2025-10-08T11:34:58.625968+00:00 [running]> on host b40be2a595bb
+[2025-10-08T11:35:01.181+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_weather_etl' AIRFLOW_CTX_TASK_ID='validate_weather_data' AIRFLOW_CTX_EXECUTION_DATE='2025-10-08T11:34:58.625968+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-08T11:34:58.625968+00:00'
+[2025-10-08T11:35:01.187+0000] {logging_mixin.py:151} INFO - Weather data validation passed. 24 records ready for processing.
+[2025-10-08T11:35:01.193+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-10-08T11:35:01.197+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=nyc_weather_etl, task_id=validate_weather_data, execution_date=20251008T113458, start_date=20251008T113501, end_date=20251008T113501
+[2025-10-08T11:35:01.215+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-08T11:35:01.293+0000] {taskinstance.py:2776} INFO - 2 downstream tasks scheduled from follow-on schedule check

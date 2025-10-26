@@ -1,0 +1,14 @@
+[2025-10-08T06:53:45.216+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: simple_nyc_taxi_etl.validate_data scheduled__2025-10-08T00:53:13.984493+00:00 [queued]>
+[2025-10-08T06:53:45.219+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: simple_nyc_taxi_etl.validate_data scheduled__2025-10-08T00:53:13.984493+00:00 [queued]>
+[2025-10-08T06:53:45.219+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-10-08T06:53:45.223+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): validate_data> on 2025-10-08 00:53:13.984493+00:00
+[2025-10-08T06:53:45.226+0000] {standard_task_runner.py:57} INFO - Started process 4456 to run task
+[2025-10-08T06:53:45.228+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'simple_nyc_taxi_etl', 'validate_data', 'scheduled__2025-10-08T00:53:13.984493+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/simple_nyc_taxi_etl.py', '--cfg-path', '/tmp/tmp3lzn87pz']
+[2025-10-08T06:53:45.229+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask validate_data
+[2025-10-08T06:53:45.324+0000] {task_command.py:415} INFO - Running <TaskInstance: simple_nyc_taxi_etl.validate_data scheduled__2025-10-08T00:53:13.984493+00:00 [running]> on host 0e5d01676f0c
+[2025-10-08T06:53:45.350+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='simple_nyc_taxi_etl' AIRFLOW_CTX_TASK_ID='validate_data' AIRFLOW_CTX_EXECUTION_DATE='2025-10-08T00:53:13.984493+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-08T00:53:13.984493+00:00'
+[2025-10-08T06:53:45.356+0000] {logging_mixin.py:151} INFO - Data validation passed. 1000 records ready for processing.
+[2025-10-08T06:53:45.356+0000] {python.py:194} INFO - Done. Returned value was: True
+[2025-10-08T06:53:45.365+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=simple_nyc_taxi_etl, task_id=validate_data, execution_date=20251008T005313, start_date=20251008T065345, end_date=20251008T065345
+[2025-10-08T06:53:45.409+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-08T06:53:45.476+0000] {taskinstance.py:2776} INFO - 2 downstream tasks scheduled from follow-on schedule check

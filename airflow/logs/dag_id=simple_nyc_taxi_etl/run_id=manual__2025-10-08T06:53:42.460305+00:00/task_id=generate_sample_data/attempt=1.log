@@ -1,0 +1,14 @@
+[2025-10-08T06:53:48.316+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: simple_nyc_taxi_etl.generate_sample_data manual__2025-10-08T06:53:42.460305+00:00 [queued]>
+[2025-10-08T06:53:48.318+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: simple_nyc_taxi_etl.generate_sample_data manual__2025-10-08T06:53:42.460305+00:00 [queued]>
+[2025-10-08T06:53:48.318+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-10-08T06:53:48.370+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): generate_sample_data> on 2025-10-08 06:53:42.460305+00:00
+[2025-10-08T06:53:48.372+0000] {standard_task_runner.py:57} INFO - Started process 4477 to run task
+[2025-10-08T06:53:48.374+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'simple_nyc_taxi_etl', 'generate_sample_data', 'manual__2025-10-08T06:53:42.460305+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/simple_nyc_taxi_etl.py', '--cfg-path', '/tmp/tmp6nkddog3']
+[2025-10-08T06:53:48.375+0000] {standard_task_runner.py:85} INFO - Job 12: Subtask generate_sample_data
+[2025-10-08T06:53:48.393+0000] {task_command.py:415} INFO - Running <TaskInstance: simple_nyc_taxi_etl.generate_sample_data manual__2025-10-08T06:53:42.460305+00:00 [running]> on host 0e5d01676f0c
+[2025-10-08T06:53:48.423+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='simple_nyc_taxi_etl' AIRFLOW_CTX_TASK_ID='generate_sample_data' AIRFLOW_CTX_EXECUTION_DATE='2025-10-08T06:53:42.460305+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-08T06:53:42.460305+00:00'
+[2025-10-08T06:53:48.437+0000] {logging_mixin.py:151} INFO - Generated sample data: 1000 records at /opt/***/data/raw/taxi_data_20251008_06.json
+[2025-10-08T06:53:48.444+0000] {python.py:194} INFO - Done. Returned value was: /opt/***/data/raw/taxi_data_20251008_06.json
+[2025-10-08T06:53:48.452+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=simple_nyc_taxi_etl, task_id=generate_sample_data, execution_date=20251008T065342, start_date=20251008T065348, end_date=20251008T065348
+[2025-10-08T06:53:48.470+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-08T06:53:48.483+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

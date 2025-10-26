@@ -1,0 +1,367 @@
+[2025-10-08T08:07:08.618+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_weather_etl.spark_process_weather_to_iceberg manual__2025-10-08T08:07:05.900359+00:00 [queued]>
+[2025-10-08T08:07:08.623+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_weather_etl.spark_process_weather_to_iceberg manual__2025-10-08T08:07:05.900359+00:00 [queued]>
+[2025-10-08T08:07:08.623+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-10-08T08:07:08.628+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): spark_process_weather_to_iceberg> on 2025-10-08 08:07:05.900359+00:00
+[2025-10-08T08:07:08.631+0000] {standard_task_runner.py:57} INFO - Started process 31084 to run task
+[2025-10-08T08:07:08.632+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_weather_etl', 'spark_process_weather_to_iceberg', 'manual__2025-10-08T08:07:05.900359+00:00', '--job-id', '299', '--raw', '--subdir', 'DAGS_FOLDER/nyc_weather_etl.py', '--cfg-path', '/tmp/tmp358q6w78']
+[2025-10-08T08:07:08.634+0000] {standard_task_runner.py:85} INFO - Job 299: Subtask spark_process_weather_to_iceberg
+[2025-10-08T08:07:08.655+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_weather_etl.spark_process_weather_to_iceberg manual__2025-10-08T08:07:05.900359+00:00 [running]> on host 0e5d01676f0c
+[2025-10-08T08:07:08.783+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_weather_etl' AIRFLOW_CTX_TASK_ID='spark_process_weather_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-10-08T08:07:05.900359+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-08T08:07:05.900359+00:00'
+[2025-10-08T08:07:08.787+0000] {base.py:73} INFO - Using connection ID 'spark_default' for task execution.
+[2025-10-08T08:07:08.788+0000] {spark_submit.py:340} INFO - Spark-Submit cmd: /opt/bitnami/spark/bin/spark-submit --master spark://spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar --name arrow-spark --queue default /opt/***/dags/spark_jobs/weather_to_iceberg.py /opt/***/data/weather/weather_data_20251008_07.json
+[2025-10-08T08:07:09.681+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:09 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-10-08T08:07:09.778+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:09 WARN DependencyUtils: Local jar /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar does not exist, skipping.
+[2025-10-08T08:07:09.779+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:09 WARN DependencyUtils: Local jar /opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar does not exist, skipping.
+[2025-10-08T08:07:09.779+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:09 WARN DependencyUtils: Local jar /opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar does not exist, skipping.
+[2025-10-08T08:07:10.222+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkContext: Running Spark version 3.5.1
+[2025-10-08T08:07:10.222+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkContext: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-10-08T08:07:10.222+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkContext: Java version 11.0.28
+[2025-10-08T08:07:10.238+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO ResourceUtils: ==============================================================
+[2025-10-08T08:07:10.239+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-10-08T08:07:10.239+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO ResourceUtils: ==============================================================
+[2025-10-08T08:07:10.239+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkContext: Submitted application: Weather to Iceberg ETL
+[2025-10-08T08:07:10.248+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-10-08T08:07:10.254+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO ResourceProfile: Limiting resource is cpu
+[2025-10-08T08:07:10.254+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-10-08T08:07:10.284+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SecurityManager: Changing view acls to: ***
+[2025-10-08T08:07:10.284+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SecurityManager: Changing modify acls to: ***
+[2025-10-08T08:07:10.284+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SecurityManager: Changing view acls groups to:
+[2025-10-08T08:07:10.284+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SecurityManager: Changing modify acls groups to:
+[2025-10-08T08:07:10.284+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-10-08T08:07:10.397+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Utils: Successfully started service 'sparkDriver' on port 45235.
+[2025-10-08T08:07:10.409+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkEnv: Registering MapOutputTracker
+[2025-10-08T08:07:10.422+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkEnv: Registering BlockManagerMaster
+[2025-10-08T08:07:10.431+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-10-08T08:07:10.432+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-10-08T08:07:10.434+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-10-08T08:07:10.445+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-54d9e9e3-20d4-4c88-8b0e-3a48b67d14c6
+[2025-10-08T08:07:10.451+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-10-08T08:07:10.458+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-10-08T08:07:10.522+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-10-08T08:07:10.548+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 ERROR SparkContext: Failed to add file:/opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to Spark environment
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - java.io.FileNotFoundException: Jar /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar not found
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.addLocalJarFile$1(SparkContext.scala:2100)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.addJar(SparkContext.scala:2156)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.$anonfun$new$15(SparkContext.scala:526)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.$anonfun$new$15$adapted(SparkContext.scala:526)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.<init>(SparkContext.scala:526)
+[2025-10-08T08:07:10.561+0000] {spark_submit.py:491} INFO - at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.Gateway.invoke(Gateway.java:238)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 ERROR SparkContext: Failed to add file:/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar to Spark environment
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - java.io.FileNotFoundException: Jar /opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar not found
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.addLocalJarFile$1(SparkContext.scala:2100)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.addJar(SparkContext.scala:2156)
+[2025-10-08T08:07:10.562+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.$anonfun$new$15(SparkContext.scala:526)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.$anonfun$new$15$adapted(SparkContext.scala:526)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.<init>(SparkContext.scala:526)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at py4j.Gateway.invoke(Gateway.java:238)
+[2025-10-08T08:07:10.563+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 ERROR SparkContext: Failed to add file:/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar to Spark environment
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - java.io.FileNotFoundException: Jar /opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar not found
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.addLocalJarFile$1(SparkContext.scala:2100)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.addJar(SparkContext.scala:2156)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.$anonfun$new$15(SparkContext.scala:526)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.$anonfun$new$15$adapted(SparkContext.scala:526)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at org.apache.spark.SparkContext.<init>(SparkContext.scala:526)
+[2025-10-08T08:07:10.564+0000] {spark_submit.py:491} INFO - at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.Gateway.invoke(Gateway.java:238)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-10-08T08:07:10.565+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-10-08T08:07:10.586+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Executor: Starting executor ID driver on host 0e5d01676f0c
+[2025-10-08T08:07:10.586+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Executor: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-10-08T08:07:10.586+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Executor: Java version 11.0.28
+[2025-10-08T08:07:10.588+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-10-08T08:07:10.588+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@648b719d for default.
+[2025-10-08T08:07:10.597+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 35291.
+[2025-10-08T08:07:10.597+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO NettyBlockTransferService: Server created on 0e5d01676f0c:35291
+[2025-10-08T08:07:10.598+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-10-08T08:07:10.601+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 0e5d01676f0c, 35291, None)
+[2025-10-08T08:07:10.602+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManagerMasterEndpoint: Registering block manager 0e5d01676f0c:35291 with 434.4 MiB RAM, BlockManagerId(driver, 0e5d01676f0c, 35291, None)
+[2025-10-08T08:07:10.603+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 0e5d01676f0c, 35291, None)
+[2025-10-08T08:07:10.603+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 0e5d01676f0c, 35291, None)
+[2025-10-08T08:07:10.744+0000] {spark_submit.py:491} INFO - 25/10/08 08:07:10 WARN SparkSession: Cannot use org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions to configure session extensions.
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - java.lang.ClassNotFoundException: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Class.forName0(Native Method)
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Class.forName(Class.java:398)
+[2025-10-08T08:07:10.745+0000] {spark_submit.py:491} INFO - at org.apache.spark.util.SparkClassUtils.classForName(SparkClassUtils.scala:41)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at org.apache.spark.util.SparkClassUtils.classForName$(SparkClassUtils.scala:36)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at org.apache.spark.util.Utils$.classForName(Utils.scala:94)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession$.$anonfun$applyExtensions$2(SparkSession.scala:1367)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession$.$anonfun$applyExtensions$2$adapted(SparkSession.scala:1365)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession$.org$apache$spark$sql$SparkSession$$applyExtensions(SparkSession.scala:1365)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.<init>(SparkSession.scala:105)
+[2025-10-08T08:07:10.746+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.Gateway.invoke(Gateway.java:238)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-10-08T08:07:10.747+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-10-08T08:07:11.616+0000] {spark_submit.py:491} INFO - Error in weather ETL job: An error occurred while calling o48.sql.
+[2025-10-08T08:07:11.617+0000] {spark_submit.py:491} INFO - : org.apache.spark.SparkException: Cannot find catalog plugin class for catalog 'spark_catalog': org.apache.iceberg.spark.SparkSessionCatalog.
+[2025-10-08T08:07:11.617+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.errors.QueryExecutionErrors$.catalogPluginClassNotFoundForCatalogError(QueryExecutionErrors.scala:1925)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.Catalogs$.load(Catalogs.scala:70)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.loadV2SessionCatalog(CatalogManager.scala:67)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.$anonfun$v2SessionCatalog$2(CatalogManager.scala:86)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.HashMap.getOrElseUpdate(HashMap.scala:86)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.$anonfun$v2SessionCatalog$1(CatalogManager.scala:86)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at scala.Option.map(Option.scala:230)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.v2SessionCatalog(CatalogManager.scala:85)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.catalog(CatalogManager.scala:51)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.currentCatalog(CatalogManager.scala:122)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.LookupCatalog.currentCatalog(LookupCatalog.scala:34)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.LookupCatalog.currentCatalog$(LookupCatalog.scala:34)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs.currentCatalog(ResolveCatalogs.scala:27)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.LookupCatalog$CatalogAndNamespace$.unapply(LookupCatalog.scala:89)
+[2025-10-08T08:07:11.618+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs$$anonfun$apply$1.applyOrElse(ResolveCatalogs.scala:51)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs$$anonfun$apply$1.applyOrElse(ResolveCatalogs.scala:30)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$2(AnalysisHelper.scala:170)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$1(AnalysisHelper.scala:170)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:323)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning(AnalysisHelper.scala:168)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning$(AnalysisHelper.scala:164)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsDownWithPruning(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$4(AnalysisHelper.scala:175)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.trees.UnaryLike.mapChildren(TreeNode.scala:1215)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.trees.UnaryLike.mapChildren$(TreeNode.scala:1214)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.CreateNamespace.mapChildren(v2Commands.scala:548)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$1(AnalysisHelper.scala:175)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:323)
+[2025-10-08T08:07:11.619+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning(AnalysisHelper.scala:168)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning$(AnalysisHelper.scala:164)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsDownWithPruning(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning(AnalysisHelper.scala:99)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning$(AnalysisHelper.scala:96)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsWithPruning(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators(AnalysisHelper.scala:76)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators$(AnalysisHelper.scala:75)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperators(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs.apply(ResolveCatalogs.scala:30)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs.apply(ResolveCatalogs.scala:27)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:222)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at scala.collection.immutable.List.foldLeft(List.scala:91)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:219)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:211)
+[2025-10-08T08:07:11.620+0000] {spark_submit.py:491} INFO - at scala.collection.immutable.List.foreach(List.scala:431)
+[2025-10-08T08:07:11.621+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:211)
+[2025-10-08T08:07:11.621+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:226)
+[2025-10-08T08:07:11.621+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:222)
+[2025-10-08T08:07:11.621+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:173)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:222)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:188)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:182)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:182)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:209)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:330)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:208)
+[2025-10-08T08:07:11.622+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.$anonfun$analyzed$1(QueryExecution.scala:77)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:138)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:219)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:219)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:218)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:77)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:74)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:66)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:99)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+[2025-10-08T08:07:11.623+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[2025-10-08T08:07:11.624+0000] {spark_submit.py:491} INFO - at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at py4j.Gateway.invoke(Gateway.java:282)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - Caused by: java.lang.ClassNotFoundException: org.apache.iceberg.spark.SparkSessionCatalog
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+[2025-10-08T08:07:11.625+0000] {spark_submit.py:491} INFO - at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+[2025-10-08T08:07:11.626+0000] {spark_submit.py:491} INFO - at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+[2025-10-08T08:07:11.626+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.Catalogs$.load(Catalogs.scala:60)
+[2025-10-08T08:07:11.626+0000] {spark_submit.py:491} INFO - ... 86 more
+[2025-10-08T08:07:11.626+0000] {spark_submit.py:491} INFO - 
+[2025-10-08T08:07:11.692+0000] {spark_submit.py:491} INFO - Traceback (most recent call last):
+[2025-10-08T08:07:11.692+0000] {spark_submit.py:491} INFO - File "/opt/***/dags/spark_jobs/weather_to_iceberg.py", line 151, in <module>
+[2025-10-08T08:07:11.692+0000] {spark_submit.py:491} INFO - main()
+[2025-10-08T08:07:11.692+0000] {spark_submit.py:491} INFO - File "/opt/***/dags/spark_jobs/weather_to_iceberg.py", line 137, in main
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - create_weather_tables(spark)
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - File "/opt/***/dags/spark_jobs/weather_to_iceberg.py", line 38, in create_weather_tables
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - spark.sql("CREATE DATABASE IF NOT EXISTS weather")
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 1631, in sql
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 179, in deco
+[2025-10-08T08:07:11.693+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+[2025-10-08T08:07:11.734+0000] {spark_submit.py:491} INFO - py4j.protocol.Py4JJavaError: An error occurred while calling o48.sql.
+[2025-10-08T08:07:11.734+0000] {spark_submit.py:491} INFO - : org.apache.spark.SparkException: Cannot find catalog plugin class for catalog 'spark_catalog': org.apache.iceberg.spark.SparkSessionCatalog.
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.errors.QueryExecutionErrors$.catalogPluginClassNotFoundForCatalogError(QueryExecutionErrors.scala:1925)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.Catalogs$.load(Catalogs.scala:70)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.loadV2SessionCatalog(CatalogManager.scala:67)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.$anonfun$v2SessionCatalog$2(CatalogManager.scala:86)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at scala.collection.mutable.HashMap.getOrElseUpdate(HashMap.scala:86)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.$anonfun$v2SessionCatalog$1(CatalogManager.scala:86)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at scala.Option.map(Option.scala:230)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.v2SessionCatalog(CatalogManager.scala:85)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.catalog(CatalogManager.scala:51)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.CatalogManager.currentCatalog(CatalogManager.scala:122)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.LookupCatalog.currentCatalog(LookupCatalog.scala:34)
+[2025-10-08T08:07:11.735+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.LookupCatalog.currentCatalog$(LookupCatalog.scala:34)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs.currentCatalog(ResolveCatalogs.scala:27)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.LookupCatalog$CatalogAndNamespace$.unapply(LookupCatalog.scala:89)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs$$anonfun$apply$1.applyOrElse(ResolveCatalogs.scala:51)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs$$anonfun$apply$1.applyOrElse(ResolveCatalogs.scala:30)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$2(AnalysisHelper.scala:170)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$1(AnalysisHelper.scala:170)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:323)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning(AnalysisHelper.scala:168)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning$(AnalysisHelper.scala:164)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsDownWithPruning(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$4(AnalysisHelper.scala:175)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.trees.UnaryLike.mapChildren(TreeNode.scala:1215)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.trees.UnaryLike.mapChildren$(TreeNode.scala:1214)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.CreateNamespace.mapChildren(v2Commands.scala:548)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$1(AnalysisHelper.scala:175)
+[2025-10-08T08:07:11.736+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:323)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning(AnalysisHelper.scala:168)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning$(AnalysisHelper.scala:164)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsDownWithPruning(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning(AnalysisHelper.scala:99)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning$(AnalysisHelper.scala:96)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsWithPruning(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators(AnalysisHelper.scala:76)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators$(AnalysisHelper.scala:75)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperators(LogicalPlan.scala:32)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs.apply(ResolveCatalogs.scala:30)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.ResolveCatalogs.apply(ResolveCatalogs.scala:27)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:222)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at scala.collection.immutable.List.foldLeft(List.scala:91)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:219)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:211)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at scala.collection.immutable.List.foreach(List.scala:431)
+[2025-10-08T08:07:11.737+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:211)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:226)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:222)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:173)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:222)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:188)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:182)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:182)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:209)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:330)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:208)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.$anonfun$analyzed$1(QueryExecution.scala:77)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:138)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:219)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:546)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:219)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+[2025-10-08T08:07:11.738+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:218)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:77)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:74)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:66)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:99)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[2025-10-08T08:07:11.739+0000] {spark_submit.py:491} INFO - at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at py4j.Gateway.invoke(Gateway.java:282)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - Caused by: java.lang.ClassNotFoundException: org.apache.iceberg.spark.SparkSessionCatalog
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:594)
+[2025-10-08T08:07:11.740+0000] {spark_submit.py:491} INFO - at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+[2025-10-08T08:07:11.741+0000] {spark_submit.py:491} INFO - at org.apache.spark.sql.connector.catalog.Catalogs$.load(Catalogs.scala:60)
+[2025-10-08T08:07:11.741+0000] {spark_submit.py:491} INFO - ... 86 more
+[2025-10-08T08:07:11.741+0000] {spark_submit.py:491} INFO - 
+[2025-10-08T08:07:11.780+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 156, in execute
+    self._hook.submit(self._application)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 422, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: /opt/bitnami/spark/bin/spark-submit --master spark://spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar --name arrow-spark --queue default /opt/***/dags/spark_jobs/weather_to_iceberg.py /opt/***/data/weather/weather_data_20251008_07.json. Error code is: 1.
+[2025-10-08T08:07:11.782+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=nyc_weather_etl, task_id=spark_process_weather_to_iceberg, execution_date=20251008T080705, start_date=20251008T080708, end_date=20251008T080711
+[2025-10-08T08:07:11.788+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 299 for task spark_process_weather_to_iceberg (Cannot execute: /opt/bitnami/spark/bin/spark-submit --master spark://spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar --name arrow-spark --queue default /opt/***/dags/spark_jobs/weather_to_iceberg.py /opt/***/data/weather/weather_data_20251008_07.json. Error code is: 1.; 31084)
+[2025-10-08T08:07:11.817+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-10-08T08:07:11.827+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

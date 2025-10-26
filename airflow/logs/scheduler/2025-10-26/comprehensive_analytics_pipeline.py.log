@@ -1,0 +1,421 @@
+[2025-10-26T07:37:44.511+0000] {processor.py:157} INFO - Started process (PID=240) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:37:44.512+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:37:44.513+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:37:44.513+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:37:44.523+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:37:44.573+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:37:44.573+0000] {security.py:708} INFO - Not syncing DAG-level permissions for DAG 'DAG:comprehensive_analytics_pipeline' as access control is unset.
+[2025-10-26T07:37:44.573+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:37:44.573+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:37:44.581+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:37:44.581+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:37:44.580941+00:00, run_after=2025-10-26T07:37:44.580941+00:00
+[2025-10-26T07:37:44.597+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.087 seconds
+[2025-10-26T07:38:15.218+0000] {processor.py:157} INFO - Started process (PID=799) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:38:15.218+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:38:15.219+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:38:15.219+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:38:15.227+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:38:15.238+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:38:15.238+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:38:15.247+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:38:15.247+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:38:15.247000+00:00, run_after=2025-10-26T07:38:15.247000+00:00
+[2025-10-26T07:38:15.253+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.036 seconds
+[2025-10-26T07:38:45.751+0000] {processor.py:157} INFO - Started process (PID=844) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:38:45.752+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:38:45.754+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:38:45.753+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:38:45.763+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:38:45.776+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:38:45.776+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:38:45.785+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:38:45.785+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:38:45.785359+00:00, run_after=2025-10-26T07:38:45.785359+00:00
+[2025-10-26T07:38:45.794+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.045 seconds
+[2025-10-26T07:39:16.301+0000] {processor.py:157} INFO - Started process (PID=889) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:39:16.301+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:39:16.302+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:39:16.302+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:39:16.310+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:39:16.319+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:39:16.319+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:39:16.331+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:39:16.331+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:39:16.331383+00:00, run_after=2025-10-26T07:39:16.331383+00:00
+[2025-10-26T07:39:16.339+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.040 seconds
+[2025-10-26T07:39:46.803+0000] {processor.py:157} INFO - Started process (PID=934) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:39:46.804+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:39:46.805+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:39:46.805+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:39:46.813+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:39:46.823+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:39:46.823+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:39:46.833+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:39:46.833+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:39:46.833419+00:00, run_after=2025-10-26T07:39:46.833419+00:00
+[2025-10-26T07:39:46.840+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.038 seconds
+[2025-10-26T07:40:17.403+0000] {processor.py:157} INFO - Started process (PID=979) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:40:17.403+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:40:17.405+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:40:17.405+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:40:17.414+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:40:17.427+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:40:17.427+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:40:17.435+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:40:17.435+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:40:17.435210+00:00, run_after=2025-10-26T07:40:17.435210+00:00
+[2025-10-26T07:40:17.448+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.047 seconds
+[2025-10-26T07:40:47.922+0000] {processor.py:157} INFO - Started process (PID=1024) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:40:47.922+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:40:47.923+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:40:47.923+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:40:47.931+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:40:47.944+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:40:47.943+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:40:47.953+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:40:47.953+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:40:47.953212+00:00, run_after=2025-10-26T07:40:47.953212+00:00
+[2025-10-26T07:40:47.960+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.040 seconds
+[2025-10-26T07:41:18.522+0000] {processor.py:157} INFO - Started process (PID=1069) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:41:18.523+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:41:18.525+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:41:18.525+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:41:18.533+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:41:18.548+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:41:18.548+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:41:18.555+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:41:18.555+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:41:18.555671+00:00, run_after=2025-10-26T07:41:18.555671+00:00
+[2025-10-26T07:41:18.561+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.040 seconds
+[2025-10-26T07:41:49.042+0000] {processor.py:157} INFO - Started process (PID=1114) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:41:49.043+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:41:49.044+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:41:49.044+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:41:49.052+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:41:49.063+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:41:49.063+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:41:49.071+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:41:49.071+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:41:49.071302+00:00, run_after=2025-10-26T07:41:49.071302+00:00
+[2025-10-26T07:41:49.078+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.037 seconds
+[2025-10-26T07:42:19.644+0000] {processor.py:157} INFO - Started process (PID=1159) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:42:19.644+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:42:19.646+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:42:19.646+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:42:19.656+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:42:19.667+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:42:19.667+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:42:19.677+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:42:19.677+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:42:19.677746+00:00, run_after=2025-10-26T07:42:19.677746+00:00
+[2025-10-26T07:42:19.691+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.049 seconds
+[2025-10-26T07:42:50.229+0000] {processor.py:157} INFO - Started process (PID=1204) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:42:50.230+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:42:50.231+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:42:50.231+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:42:50.246+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:42:50.258+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:42:50.258+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:42:50.267+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:42:50.267+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:42:50.267231+00:00, run_after=2025-10-26T07:42:50.267231+00:00
+[2025-10-26T07:42:50.274+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.047 seconds
+[2025-10-26T07:43:20.847+0000] {processor.py:157} INFO - Started process (PID=1249) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:43:20.848+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:43:20.850+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:43:20.849+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:43:20.859+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:43:20.869+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:43:20.869+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:43:20.877+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:43:20.877+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:43:20.877427+00:00, run_after=2025-10-26T07:43:20.877427+00:00
+[2025-10-26T07:43:20.884+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.038 seconds
+[2025-10-26T07:43:51.434+0000] {processor.py:157} INFO - Started process (PID=1294) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:43:51.435+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:43:51.437+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:43:51.436+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:43:51.448+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:43:51.458+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:43:51.458+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:43:51.466+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:43:51.466+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:43:51.466678+00:00, run_after=2025-10-26T07:43:51.466678+00:00
+[2025-10-26T07:43:51.473+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.040 seconds
+[2025-10-26T07:44:22.046+0000] {processor.py:157} INFO - Started process (PID=1339) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:44:22.046+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:44:22.047+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:44:22.047+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:44:22.055+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:44:22.065+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:44:22.065+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:44:22.074+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:44:22.074+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:44:22.073932+00:00, run_after=2025-10-26T07:44:22.073932+00:00
+[2025-10-26T07:44:22.080+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:44:52.666+0000] {processor.py:157} INFO - Started process (PID=1384) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:44:52.666+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:44:52.667+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:44:52.667+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:44:52.675+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:44:52.684+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:44:52.684+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:44:52.692+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:44:52.692+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:44:52.692165+00:00, run_after=2025-10-26T07:44:52.692165+00:00
+[2025-10-26T07:44:52.698+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T07:45:23.253+0000] {processor.py:157} INFO - Started process (PID=1429) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:45:23.254+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:45:23.254+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:45:23.254+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:45:23.262+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:45:23.272+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:45:23.272+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:45:23.281+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:45:23.281+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:45:23.281022+00:00, run_after=2025-10-26T07:45:23.281022+00:00
+[2025-10-26T07:45:23.287+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:45:53.871+0000] {processor.py:157} INFO - Started process (PID=1481) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:45:53.871+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:45:53.872+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:45:53.872+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:45:53.881+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:45:53.894+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:45:53.894+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:45:53.905+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:45:53.905+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:45:53.905111+00:00, run_after=2025-10-26T07:45:53.905111+00:00
+[2025-10-26T07:45:53.912+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.043 seconds
+[2025-10-26T07:46:24.512+0000] {processor.py:157} INFO - Started process (PID=1526) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:46:24.512+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:46:24.513+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:46:24.513+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:46:24.521+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:46:24.532+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:46:24.531+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:46:24.541+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:46:24.540+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:46:24.540806+00:00, run_after=2025-10-26T07:46:24.540806+00:00
+[2025-10-26T07:46:24.548+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.037 seconds
+[2025-10-26T07:46:55.145+0000] {processor.py:157} INFO - Started process (PID=1571) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:46:55.146+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:46:55.147+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:46:55.147+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:46:55.156+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:46:55.167+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:46:55.167+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:46:55.175+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:46:55.175+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:46:55.175230+00:00, run_after=2025-10-26T07:46:55.175230+00:00
+[2025-10-26T07:46:55.181+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.037 seconds
+[2025-10-26T07:47:25.781+0000] {processor.py:157} INFO - Started process (PID=1616) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:47:25.781+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:47:25.782+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:47:25.782+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:47:25.790+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:47:25.800+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:47:25.800+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:47:25.808+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:47:25.808+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:47:25.807922+00:00, run_after=2025-10-26T07:47:25.807922+00:00
+[2025-10-26T07:47:25.815+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.036 seconds
+[2025-10-26T07:47:56.364+0000] {processor.py:157} INFO - Started process (PID=1661) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:47:56.364+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:47:56.365+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:47:56.365+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:47:56.373+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:47:56.383+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:47:56.383+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:47:56.392+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:47:56.391+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:47:56.391852+00:00, run_after=2025-10-26T07:47:56.391852+00:00
+[2025-10-26T07:47:56.398+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.036 seconds
+[2025-10-26T07:48:26.969+0000] {processor.py:157} INFO - Started process (PID=1706) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:48:26.969+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:48:26.970+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:48:26.970+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:48:26.978+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:48:26.988+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:48:26.988+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:48:26.996+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:48:26.996+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:48:26.995964+00:00, run_after=2025-10-26T07:48:26.995964+00:00
+[2025-10-26T07:48:27.002+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T07:48:57.564+0000] {processor.py:157} INFO - Started process (PID=1751) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:48:57.565+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:48:57.566+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:48:57.565+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:48:57.574+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:48:57.584+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:48:57.584+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:48:57.592+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:48:57.592+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:48:57.592572+00:00, run_after=2025-10-26T07:48:57.592572+00:00
+[2025-10-26T07:48:57.599+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.036 seconds
+[2025-10-26T07:49:28.178+0000] {processor.py:157} INFO - Started process (PID=1796) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:49:28.179+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:49:28.179+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:49:28.179+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:49:28.187+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:49:28.197+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:49:28.197+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:49:28.205+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:49:28.205+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:49:28.205328+00:00, run_after=2025-10-26T07:49:28.205328+00:00
+[2025-10-26T07:49:28.212+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:49:58.781+0000] {processor.py:157} INFO - Started process (PID=1841) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:49:58.781+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:49:58.782+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:49:58.782+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:49:58.790+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:49:58.801+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:49:58.801+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:49:58.809+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:49:58.809+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:49:58.809292+00:00, run_after=2025-10-26T07:49:58.809292+00:00
+[2025-10-26T07:49:58.816+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.037 seconds
+[2025-10-26T07:50:29.404+0000] {processor.py:157} INFO - Started process (PID=1886) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:50:29.404+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:50:29.405+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:50:29.405+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:50:29.413+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:50:29.423+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:50:29.423+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:50:29.432+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:50:29.432+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:50:29.431933+00:00, run_after=2025-10-26T07:50:29.431933+00:00
+[2025-10-26T07:50:29.438+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:51:00.021+0000] {processor.py:157} INFO - Started process (PID=1931) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:51:00.021+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:51:00.022+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:51:00.022+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:51:00.030+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:51:00.040+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:51:00.040+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:51:00.049+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:51:00.049+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:51:00.048937+00:00, run_after=2025-10-26T07:51:00.048937+00:00
+[2025-10-26T07:51:00.055+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.036 seconds
+[2025-10-26T07:51:30.630+0000] {processor.py:157} INFO - Started process (PID=1975) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:51:30.631+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:51:30.632+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:51:30.632+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:51:30.640+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:51:30.650+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:51:30.650+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:51:30.658+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:51:30.658+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:51:30.658138+00:00, run_after=2025-10-26T07:51:30.658138+00:00
+[2025-10-26T07:51:30.664+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:52:01.252+0000] {processor.py:157} INFO - Started process (PID=2020) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:52:01.253+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:52:01.254+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:52:01.254+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:52:01.261+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:52:01.271+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:52:01.271+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:52:01.278+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:52:01.278+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:52:01.278655+00:00, run_after=2025-10-26T07:52:01.278655+00:00
+[2025-10-26T07:52:01.285+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T07:52:31.841+0000] {processor.py:157} INFO - Started process (PID=2065) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:52:31.841+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:52:31.842+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:52:31.842+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:52:31.850+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:52:31.861+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:52:31.861+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:52:31.868+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:52:31.868+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:52:31.868588+00:00, run_after=2025-10-26T07:52:31.868588+00:00
+[2025-10-26T07:52:31.874+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:53:02.477+0000] {processor.py:157} INFO - Started process (PID=2110) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:53:02.477+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:53:02.478+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:53:02.478+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:53:02.485+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:53:02.494+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:53:02.494+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:53:02.502+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:53:02.502+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:53:02.502642+00:00, run_after=2025-10-26T07:53:02.502642+00:00
+[2025-10-26T07:53:02.508+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T07:53:33.081+0000] {processor.py:157} INFO - Started process (PID=2155) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:53:33.081+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:53:33.082+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:53:33.082+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:53:33.089+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:53:33.099+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:53:33.099+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:53:33.106+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:53:33.106+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:53:33.106559+00:00, run_after=2025-10-26T07:53:33.106559+00:00
+[2025-10-26T07:53:33.112+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T07:54:03.734+0000] {processor.py:157} INFO - Started process (PID=2200) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:54:03.734+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:54:03.736+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:54:03.735+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:54:03.744+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:54:03.754+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:54:03.754+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:54:03.763+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:54:03.763+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:54:03.763054+00:00, run_after=2025-10-26T07:54:03.763054+00:00
+[2025-10-26T07:54:03.770+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.038 seconds
+[2025-10-26T07:54:34.359+0000] {processor.py:157} INFO - Started process (PID=2245) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:54:34.360+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:54:34.361+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:54:34.361+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:54:34.368+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:54:34.378+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:54:34.378+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:54:34.385+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:54:34.385+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:54:34.385155+00:00, run_after=2025-10-26T07:54:34.385155+00:00
+[2025-10-26T07:54:34.391+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T07:55:04.964+0000] {processor.py:157} INFO - Started process (PID=2290) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:55:04.965+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:55:04.966+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:55:04.966+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:55:04.973+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:55:04.982+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:55:04.982+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:55:04.989+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:55:04.989+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:55:04.989264+00:00, run_after=2025-10-26T07:55:04.989264+00:00
+[2025-10-26T07:55:04.995+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.032 seconds
+[2025-10-26T07:55:35.567+0000] {processor.py:157} INFO - Started process (PID=2335) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:55:35.568+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:55:35.568+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:55:35.568+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:55:35.576+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:55:35.585+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:55:35.585+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:55:35.593+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:55:35.593+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:55:35.592995+00:00, run_after=2025-10-26T07:55:35.592995+00:00
+[2025-10-26T07:55:35.599+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T07:56:06.151+0000] {processor.py:157} INFO - Started process (PID=2380) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:56:06.152+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:56:06.153+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:56:06.153+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:56:06.160+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:56:06.170+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:56:06.170+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:56:06.177+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:56:06.177+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:56:06.177384+00:00, run_after=2025-10-26T07:56:06.177384+00:00
+[2025-10-26T07:56:06.183+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T07:56:36.765+0000] {processor.py:157} INFO - Started process (PID=2425) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:56:36.765+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:56:36.766+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:56:36.766+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:56:36.774+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:56:36.783+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:56:36.783+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:56:36.791+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:56:36.791+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:56:36.791572+00:00, run_after=2025-10-26T07:56:36.791572+00:00
+[2025-10-26T07:56:36.798+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T07:57:07.363+0000] {processor.py:157} INFO - Started process (PID=2470) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:57:07.363+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:57:07.364+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:57:07.364+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:57:07.371+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:57:07.381+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:57:07.381+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:57:07.388+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:57:07.388+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:57:07.388500+00:00, run_after=2025-10-26T07:57:07.388500+00:00
+[2025-10-26T07:57:07.394+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T07:57:37.957+0000] {processor.py:157} INFO - Started process (PID=2515) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:57:37.957+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:57:37.958+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:57:37.958+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:57:37.966+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:57:37.976+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:57:37.976+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:57:37.983+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:57:37.983+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:57:37.983525+00:00, run_after=2025-10-26T07:57:37.983525+00:00
+[2025-10-26T07:57:37.989+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T07:58:08.588+0000] {processor.py:157} INFO - Started process (PID=2560) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:58:08.589+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:58:08.589+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:58:08.589+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:58:08.597+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:58:08.606+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:58:08.606+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:58:08.613+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:58:08.613+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:58:08.613396+00:00, run_after=2025-10-26T07:58:08.613396+00:00
+[2025-10-26T07:58:08.620+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T07:58:39.169+0000] {processor.py:157} INFO - Started process (PID=2605) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:58:39.169+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:58:39.170+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:58:39.170+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:58:39.177+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:58:39.188+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:58:39.188+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:58:39.195+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:58:39.195+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:58:39.195763+00:00, run_after=2025-10-26T07:58:39.195763+00:00
+[2025-10-26T07:58:39.202+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T07:59:09.819+0000] {processor.py:157} INFO - Started process (PID=2650) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:59:09.820+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:59:09.821+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:59:09.821+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:59:09.829+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:59:09.840+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:59:09.840+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:59:09.848+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:59:09.848+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:59:09.848496+00:00, run_after=2025-10-26T07:59:09.848496+00:00
+[2025-10-26T07:59:09.854+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.037 seconds
+[2025-10-26T07:59:40.407+0000] {processor.py:157} INFO - Started process (PID=2695) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:59:40.407+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T07:59:40.408+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:59:40.408+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:59:40.416+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T07:59:40.425+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:59:40.425+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T07:59:40.433+0000] {logging_mixin.py:151} INFO - [2025-10-26T07:59:40.433+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T05:59:40.433235+00:00, run_after=2025-10-26T07:59:40.433235+00:00
+[2025-10-26T07:59:40.439+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T08:00:11.049+0000] {processor.py:157} INFO - Started process (PID=2740) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:00:11.050+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:00:11.051+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:00:11.051+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:00:11.059+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:00:11.068+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:00:11.068+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:00:11.076+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:00:11.076+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:00:11.076453+00:00, run_after=2025-10-26T08:00:11.076453+00:00
+[2025-10-26T08:00:11.082+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T08:00:41.671+0000] {processor.py:157} INFO - Started process (PID=2785) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:00:41.671+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:00:41.672+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:00:41.672+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:00:41.680+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:00:41.690+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:00:41.690+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:00:41.697+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:00:41.697+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:00:41.697736+00:00, run_after=2025-10-26T08:00:41.697736+00:00
+[2025-10-26T08:00:41.704+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T08:01:12.280+0000] {processor.py:157} INFO - Started process (PID=2830) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:01:12.280+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:01:12.281+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:01:12.281+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:01:12.289+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:01:12.299+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:01:12.299+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:01:12.306+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:01:12.306+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:01:12.306824+00:00, run_after=2025-10-26T08:01:12.306824+00:00
+[2025-10-26T08:01:12.312+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T08:01:42.913+0000] {processor.py:157} INFO - Started process (PID=2875) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:01:42.914+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:01:42.914+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:01:42.914+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:01:42.923+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:01:42.937+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:01:42.936+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:01:42.946+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:01:42.946+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:01:42.946508+00:00, run_after=2025-10-26T08:01:42.946508+00:00
+[2025-10-26T08:01:42.953+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.042 seconds
+[2025-10-26T08:02:13.541+0000] {processor.py:157} INFO - Started process (PID=2920) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:02:13.542+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:02:13.543+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:02:13.543+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:02:13.550+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:02:13.560+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:02:13.560+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:02:13.567+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:02:13.567+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:02:13.567643+00:00, run_after=2025-10-26T08:02:13.567643+00:00
+[2025-10-26T08:02:13.573+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T08:02:44.167+0000] {processor.py:157} INFO - Started process (PID=2965) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:02:44.168+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:02:44.169+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:02:44.169+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:02:44.176+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:02:44.185+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:02:44.185+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:02:44.193+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:02:44.193+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:02:44.193344+00:00, run_after=2025-10-26T08:02:44.193344+00:00
+[2025-10-26T08:02:44.199+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T08:03:14.828+0000] {processor.py:157} INFO - Started process (PID=3010) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:03:14.828+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:03:14.829+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:03:14.829+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:03:14.837+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:03:14.847+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:03:14.847+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:03:14.856+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:03:14.856+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:03:14.855986+00:00, run_after=2025-10-26T08:03:14.855986+00:00
+[2025-10-26T08:03:14.862+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.036 seconds
+[2025-10-26T08:03:45.479+0000] {processor.py:157} INFO - Started process (PID=3055) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:03:45.479+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:03:45.480+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:03:45.480+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:03:45.488+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:03:45.498+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:03:45.497+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:03:45.505+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:03:45.505+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:03:45.505628+00:00, run_after=2025-10-26T08:03:45.505628+00:00
+[2025-10-26T08:03:45.512+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T08:04:16.125+0000] {processor.py:157} INFO - Started process (PID=3100) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:04:16.126+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:04:16.127+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:04:16.126+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:04:16.134+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:04:16.144+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:04:16.144+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:04:16.151+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:04:16.151+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:04:16.151456+00:00, run_after=2025-10-26T08:04:16.151456+00:00
+[2025-10-26T08:04:16.158+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.034 seconds
+[2025-10-26T08:04:46.756+0000] {processor.py:157} INFO - Started process (PID=3145) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:04:46.757+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:04:46.758+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:04:46.758+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:04:46.766+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:04:46.776+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:04:46.776+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:04:46.783+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:04:46.783+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:04:46.783724+00:00, run_after=2025-10-26T08:04:46.783724+00:00
+[2025-10-26T08:04:46.790+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T08:05:17.395+0000] {processor.py:157} INFO - Started process (PID=3190) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:05:17.396+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:05:17.397+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:05:17.397+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:05:17.404+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:05:17.414+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:05:17.414+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:05:17.421+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:05:17.421+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:05:17.421812+00:00, run_after=2025-10-26T08:05:17.421812+00:00
+[2025-10-26T08:05:17.427+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T08:05:48.064+0000] {processor.py:157} INFO - Started process (PID=3235) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:05:48.064+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:05:48.065+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:05:48.065+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:05:48.073+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:05:48.082+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:05:48.082+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:05:48.090+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:05:48.090+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:05:48.089937+00:00, run_after=2025-10-26T08:05:48.089937+00:00
+[2025-10-26T08:05:48.096+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T08:06:18.701+0000] {processor.py:157} INFO - Started process (PID=3280) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:06:18.701+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:06:18.702+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:06:18.702+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:06:18.709+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:06:18.719+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:06:18.719+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:06:18.727+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:06:18.727+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:06:18.727446+00:00, run_after=2025-10-26T08:06:18.727446+00:00
+[2025-10-26T08:06:18.734+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T08:06:49.348+0000] {processor.py:157} INFO - Started process (PID=3325) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:06:49.349+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:06:49.350+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:06:49.350+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:06:49.358+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:06:49.368+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:06:49.368+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:06:49.376+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:06:49.376+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:06:49.375960+00:00, run_after=2025-10-26T08:06:49.375960+00:00
+[2025-10-26T08:06:49.382+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.035 seconds
+[2025-10-26T08:07:19.961+0000] {processor.py:157} INFO - Started process (PID=3370) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:07:19.961+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:07:19.962+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:07:19.962+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:07:19.969+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:07:19.979+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:07:19.979+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:07:19.987+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:07:19.986+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:07:19.986889+00:00, run_after=2025-10-26T08:07:19.986889+00:00
+[2025-10-26T08:07:19.993+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.033 seconds
+[2025-10-26T08:07:50.678+0000] {processor.py:157} INFO - Started process (PID=3415) to work on /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:07:50.679+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/comprehensive_analytics_pipeline.py for tasks to queue
+[2025-10-26T08:07:50.679+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:07:50.679+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:07:50.692+0000] {processor.py:839} INFO - DAG(s) dict_keys(['comprehensive_analytics_pipeline']) retrieved from /opt/airflow/dags/comprehensive_analytics_pipeline.py
+[2025-10-26T08:07:50.702+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:07:50.702+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-10-26T08:07:50.709+0000] {logging_mixin.py:151} INFO - [2025-10-26T08:07:50.709+0000] {dag.py:3696} INFO - Setting next_dagrun for comprehensive_analytics_pipeline to 2025-10-26T06:07:50.709728+00:00, run_after=2025-10-26T08:07:50.709728+00:00
+[2025-10-26T08:07:50.719+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/comprehensive_analytics_pipeline.py took 0.042 seconds
