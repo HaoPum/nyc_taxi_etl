@@ -219,6 +219,10 @@ services:
   airflow-webserver:
     <<: *airflow-common
     command: webserver
+    environment:
+      <<: *airflow-common-env
+      AIRFLOW_CONN_POSTGRES_DEFAULT: "postgresql://postgres:postgres@postgres:5432/taxi_db"
+      AIRFLOW_CONN_SPARK_DEFAULT: "spark://spark-master:7077"
     ports:
       - "8080:8080"
     healthcheck:
@@ -245,6 +249,10 @@ services:
   airflow-scheduler:
     <<: *airflow-common
     command: scheduler
+    environment:
+      <<: *airflow-common-env
+      AIRFLOW_CONN_POSTGRES_DEFAULT: "postgresql://postgres:postgres@postgres:5432/taxi_db"
+      AIRFLOW_CONN_SPARK_DEFAULT: "spark://spark-master:7077"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
       interval: 30s

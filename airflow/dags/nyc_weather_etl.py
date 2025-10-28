@@ -223,7 +223,7 @@ create_location_task = PythonOperator(
 spark_weather_etl_task = SparkSubmitOperator(
     task_id='spark_process_weather_to_iceberg',
     application='/opt/airflow/dags/spark_jobs/weather_to_iceberg.py',
-    application_args=['/opt/airflow/data/weather/weather_data_20251008_06.json'],
+    application_args=["{{task_instance.xcom_pull(task_ids='validate_weather_data', key='validated_weather_path')}}"],
     conn_id='spark_default',
     spark_binary='/opt/bitnami/spark/bin/spark-submit',
     conf={
