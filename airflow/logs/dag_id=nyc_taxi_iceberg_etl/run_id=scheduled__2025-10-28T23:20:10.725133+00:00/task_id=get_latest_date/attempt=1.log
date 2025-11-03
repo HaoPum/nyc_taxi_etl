@@ -1,0 +1,29 @@
+[2025-10-29T05:20:11.218+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_iceberg_etl.get_latest_date scheduled__2025-10-28T23:20:10.725133+00:00 [queued]>
+[2025-10-29T05:20:11.222+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_iceberg_etl.get_latest_date scheduled__2025-10-28T23:20:10.725133+00:00 [queued]>
+[2025-10-29T05:20:11.222+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-10-29T05:20:11.228+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): get_latest_date> on 2025-10-28 23:20:10.725133+00:00
+[2025-10-29T05:20:11.230+0000] {standard_task_runner.py:57} INFO - Started process 216 to run task
+[2025-10-29T05:20:11.232+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_iceberg_etl', 'get_latest_date', 'scheduled__2025-10-28T23:20:10.725133+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_iceberg_etl.py', '--cfg-path', '/tmp/tmp6b2q6qbz']
+[2025-10-29T05:20:11.238+0000] {standard_task_runner.py:85} INFO - Job 19: Subtask get_latest_date
+[2025-10-29T05:20:11.485+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_taxi_iceberg_etl.get_latest_date scheduled__2025-10-28T23:20:10.725133+00:00 [running]> on host 11a5c523951d
+[2025-10-29T05:20:11.522+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_taxi_iceberg_etl' AIRFLOW_CTX_TASK_ID='get_latest_date' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T23:20:10.725133+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-28T23:20:10.725133+00:00'
+[2025-10-29T05:20:11.523+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-10-29T05:20:11.523+0000] {base.py:73} INFO - Using connection ID '***_default' for task execution.
+[2025-10-29T05:20:11.528+0000] {sql.py:418} INFO - Running statement: 
+    CREATE TABLE IF NOT EXISTS public.etl_control (
+        table_name VARCHAR(255) PRIMARY KEY,
+        last_processed_date TIMESTAMP,
+        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    , parameters: None
+[2025-10-29T05:20:11.528+0000] {base.py:73} INFO - Using connection ID '***_default' for task execution.
+[2025-10-29T05:20:11.531+0000] {sql.py:418} INFO - Running statement: 
+        SELECT last_processed_date 
+        FROM public.etl_control 
+        WHERE table_name = 'nyc_taxi_trips'
+    , parameters: None
+[2025-10-29T05:20:11.533+0000] {sql.py:427} INFO - Rows affected: 1
+[2025-10-29T05:20:11.540+0000] {python.py:194} INFO - Done. Returned value was: 2025-09-28T13:07:58.851458
+[2025-10-29T05:20:11.550+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=nyc_taxi_iceberg_etl, task_id=get_latest_date, execution_date=20251028T232010, start_date=20251029T052011, end_date=20251029T052011
+[2025-10-29T05:20:11.576+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-10-29T05:20:11.659+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

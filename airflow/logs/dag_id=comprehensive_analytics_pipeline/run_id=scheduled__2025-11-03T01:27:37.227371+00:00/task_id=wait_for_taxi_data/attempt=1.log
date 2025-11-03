@@ -1,0 +1,26 @@
+[2025-11-03T03:27:45.584+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: comprehensive_analytics_pipeline.wait_for_taxi_data scheduled__2025-11-03T01:27:37.227371+00:00 [queued]>
+[2025-11-03T03:27:45.588+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: comprehensive_analytics_pipeline.wait_for_taxi_data scheduled__2025-11-03T01:27:37.227371+00:00 [queued]>
+[2025-11-03T03:27:45.588+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-11-03T03:27:45.593+0000] {taskinstance.py:1380} INFO - Executing <Task(ExternalTaskSensor): wait_for_taxi_data> on 2025-11-03 01:27:37.227371+00:00
+[2025-11-03T03:27:45.595+0000] {standard_task_runner.py:57} INFO - Started process 6345 to run task
+[2025-11-03T03:27:45.596+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'comprehensive_analytics_pipeline', 'wait_for_taxi_data', 'scheduled__2025-11-03T01:27:37.227371+00:00', '--job-id', '71', '--raw', '--subdir', 'DAGS_FOLDER/comprehensive_analytics_pipeline.py', '--cfg-path', '/tmp/tmpuwuspkzo']
+[2025-11-03T03:27:45.599+0000] {standard_task_runner.py:85} INFO - Job 71: Subtask wait_for_taxi_data
+[2025-11-03T03:27:45.625+0000] {task_command.py:415} INFO - Running <TaskInstance: comprehensive_analytics_pipeline.wait_for_taxi_data scheduled__2025-11-03T01:27:37.227371+00:00 [running]> on host ec57452a9f33
+[2025-11-03T03:27:45.663+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='comprehensive_analytics_pipeline' AIRFLOW_CTX_TASK_ID='wait_for_taxi_data' AIRFLOW_CTX_EXECUTION_DATE='2025-11-03T01:27:37.227371+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-03T01:27:37.227371+00:00'
+[2025-11-03T03:27:45.664+0000] {external_task.py:244} INFO - Poking for tasks ['spark_process_to_iceberg'] in dag nyc_taxi_iceberg_etl on 2025-11-03T01:27:37.227371+00:00 ... 
+[2025-11-03T03:28:45.727+0000] {external_task.py:244} INFO - Poking for tasks ['spark_process_to_iceberg'] in dag nyc_taxi_iceberg_etl on 2025-11-03T01:27:37.227371+00:00 ... 
+[2025-11-03T03:29:45.789+0000] {external_task.py:244} INFO - Poking for tasks ['spark_process_to_iceberg'] in dag nyc_taxi_iceberg_etl on 2025-11-03T01:27:37.227371+00:00 ... 
+[2025-11-03T03:30:45.847+0000] {external_task.py:244} INFO - Poking for tasks ['spark_process_to_iceberg'] in dag nyc_taxi_iceberg_etl on 2025-11-03T01:27:37.227371+00:00 ... 
+[2025-11-03T03:31:45.921+0000] {external_task.py:244} INFO - Poking for tasks ['spark_process_to_iceberg'] in dag nyc_taxi_iceberg_etl on 2025-11-03T01:27:37.227371+00:00 ... 
+[2025-11-03T03:32:45.986+0000] {external_task.py:244} INFO - Poking for tasks ['spark_process_to_iceberg'] in dag nyc_taxi_iceberg_etl on 2025-11-03T01:27:37.227371+00:00 ... 
+[2025-11-03T03:32:45.993+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/sensors/external_task.py", line 334, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/sensors/base.py", line 274, in execute
+    raise AirflowSensorTimeout(message)
+airflow.exceptions.AirflowSensorTimeout: Sensor has timed out; run duration of 300.3267135120004 seconds exceeds the specified timeout of 300.0.
+[2025-11-03T03:32:46.000+0000] {taskinstance.py:1398} INFO - Immediate failure requested. Marking task as FAILED. dag_id=comprehensive_analytics_pipeline, task_id=wait_for_taxi_data, execution_date=20251103T012737, start_date=20251103T032745, end_date=20251103T033245
+[2025-11-03T03:32:46.008+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 71 for task wait_for_taxi_data (Sensor has timed out; run duration of 300.3267135120004 seconds exceeds the specified timeout of 300.0.; 6345)
+[2025-11-03T03:32:46.052+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-11-03T03:32:46.069+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

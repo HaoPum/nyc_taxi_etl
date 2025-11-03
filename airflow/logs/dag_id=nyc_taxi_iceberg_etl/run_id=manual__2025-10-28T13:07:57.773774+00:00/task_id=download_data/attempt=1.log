@@ -1,0 +1,46 @@
+[2025-10-28T13:08:05.612+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_iceberg_etl.download_data manual__2025-10-28T13:07:57.773774+00:00 [queued]>
+[2025-10-28T13:08:05.615+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_iceberg_etl.download_data manual__2025-10-28T13:07:57.773774+00:00 [queued]>
+[2025-10-28T13:08:05.615+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-10-28T13:08:05.621+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): download_data> on 2025-10-28 13:07:57.773774+00:00
+[2025-10-28T13:08:05.623+0000] {standard_task_runner.py:57} INFO - Started process 1364 to run task
+[2025-10-28T13:08:05.624+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_iceberg_etl', 'download_data', 'manual__2025-10-28T13:07:57.773774+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_iceberg_etl.py', '--cfg-path', '/tmp/tmp_zdcvo2v']
+[2025-10-28T13:08:05.626+0000] {standard_task_runner.py:85} INFO - Job 15: Subtask download_data
+[2025-10-28T13:08:05.732+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_taxi_iceberg_etl.download_data manual__2025-10-28T13:07:57.773774+00:00 [running]> on host c6c4842a6e7c
+[2025-10-28T13:08:05.761+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_taxi_iceberg_etl' AIRFLOW_CTX_TASK_ID='download_data' AIRFLOW_CTX_EXECUTION_DATE='2025-10-28T13:07:57.773774+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-28T13:07:57.773774+00:00'
+[2025-10-28T13:08:06.599+0000] {logging_mixin.py:151} INFO - Error downloading data: 403 Client Error: Forbidden for url: https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-10.parquet
+[2025-10-28T13:08:06.636+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/nyc_taxi_iceberg_etl.py", line 110, in download_nyc_taxi_data
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-10.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/nyc_taxi_iceberg_etl.py", line 124, in download_nyc_taxi_data
+    create_sample_data(output_path, last_date)
+  File "/opt/airflow/dags/nyc_taxi_iceberg_etl.py", line 170, in create_sample_data
+    df.to_parquet(output_path, index=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/frame.py", line 2889, in to_parquet
+    return to_parquet(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 411, in to_parquet
+    impl.write(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 189, in write
+    self.api.parquet.write_table(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pyarrow/parquet/core.py", line 3106, in write_table
+    writer.write_table(table, row_group_size=row_group_size)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pyarrow/parquet/core.py", line 1092, in write_table
+    self.writer.write_table(table, row_group_size=row_group_size)
+  File "pyarrow/_parquet.pyx", line 1777, in pyarrow._parquet.ParquetWriter.write_table
+  File "pyarrow/error.pxi", line 100, in pyarrow.lib.check_status
+pyarrow.lib.ArrowInvalid: Casting from timestamp[ns] to timestamp[us] would lose data: 1759065138078155552
+[2025-10-28T13:08:06.643+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=nyc_taxi_iceberg_etl, task_id=download_data, execution_date=20251028T130757, start_date=20251028T130805, end_date=20251028T130806
+[2025-10-28T13:08:06.650+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 15 for task download_data (Casting from timestamp[ns] to timestamp[us] would lose data: 1759065138078155552; 1364)
+[2025-10-28T13:08:06.670+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-10-28T13:08:06.748+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

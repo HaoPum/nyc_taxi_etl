@@ -1,0 +1,241 @@
+[2025-11-02T10:29:57.092+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_weather_etl.spark_process_location_to_iceberg scheduled__2025-11-02T09:29:54.545867+00:00 [queued]>
+[2025-11-02T10:29:57.095+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_weather_etl.spark_process_location_to_iceberg scheduled__2025-11-02T09:29:54.545867+00:00 [queued]>
+[2025-11-02T10:29:57.096+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-11-02T10:29:57.101+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): spark_process_location_to_iceberg> on 2025-11-02 09:29:54.545867+00:00
+[2025-11-02T10:29:57.103+0000] {standard_task_runner.py:57} INFO - Started process 27925 to run task
+[2025-11-02T10:29:57.105+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_weather_etl', 'spark_process_location_to_iceberg', 'scheduled__2025-11-02T09:29:54.545867+00:00', '--job-id', '142', '--raw', '--subdir', 'DAGS_FOLDER/nyc_weather_etl.py', '--cfg-path', '/tmp/tmpxx6etson']
+[2025-11-02T10:29:57.106+0000] {standard_task_runner.py:85} INFO - Job 142: Subtask spark_process_location_to_iceberg
+[2025-11-02T10:29:57.126+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_weather_etl.spark_process_location_to_iceberg scheduled__2025-11-02T09:29:54.545867+00:00 [running]> on host d3553ba1dd4a
+[2025-11-02T10:29:57.241+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_weather_etl' AIRFLOW_CTX_TASK_ID='spark_process_location_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-11-02T09:29:54.545867+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-02T09:29:54.545867+00:00'
+[2025-11-02T10:29:57.242+0000] {base.py:73} INFO - Using connection ID 'spark_default' for task execution.
+[2025-11-02T10:29:57.243+0000] {spark_submit.py:340} INFO - Spark-Submit cmd: /opt/bitnami/spark/bin/spark-submit --master spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/***/jars/hadoop-aws-3.3.4.jar --name arrow-spark /opt/***/dags/spark_jobs/location_to_iceberg.py /opt/***/data/locations/nyc_taxi_zones.json
+[2025-11-02T10:29:58.026+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-11-02T10:29:58.616+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: Running Spark version 3.5.1
+[2025-11-02T10:29:58.617+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-11-02T10:29:58.617+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: Java version 11.0.28
+[2025-11-02T10:29:58.630+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO ResourceUtils: ==============================================================
+[2025-11-02T10:29:58.630+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-11-02T10:29:58.630+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO ResourceUtils: ==============================================================
+[2025-11-02T10:29:58.630+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: Submitted application: Location to Iceberg ETL
+[2025-11-02T10:29:58.638+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-11-02T10:29:58.643+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO ResourceProfile: Limiting resource is cpu
+[2025-11-02T10:29:58.643+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-11-02T10:29:58.674+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SecurityManager: Changing view acls to: ***
+[2025-11-02T10:29:58.677+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SecurityManager: Changing modify acls to: ***
+[2025-11-02T10:29:58.677+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SecurityManager: Changing view acls groups to:
+[2025-11-02T10:29:58.677+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SecurityManager: Changing modify acls groups to:
+[2025-11-02T10:29:58.677+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-11-02T10:29:58.775+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Utils: Successfully started service 'sparkDriver' on port 46729.
+[2025-11-02T10:29:58.788+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkEnv: Registering MapOutputTracker
+[2025-11-02T10:29:58.804+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkEnv: Registering BlockManagerMaster
+[2025-11-02T10:29:58.814+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-11-02T10:29:58.815+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-11-02T10:29:58.816+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-11-02T10:29:58.827+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-3012b0e8-cfa5-49b0-a7e5-c852a5dc87fc
+[2025-11-02T10:29:58.843+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-11-02T10:29:58.851+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-11-02T10:29:58.910+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-11-02T10:29:58.938+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2025-11-02T10:29:58.956+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: Added JAR file:///opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar at spark://d3553ba1dd4a:46729/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar with timestamp 1762079398612
+[2025-11-02T10:29:58.956+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: Added JAR file:///opt/***/jars/aws-java-sdk-bundle-1.12.367.jar at spark://d3553ba1dd4a:46729/jars/aws-java-sdk-bundle-1.12.367.jar with timestamp 1762079398612
+[2025-11-02T10:29:58.956+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO SparkContext: Added JAR file:///opt/***/jars/hadoop-aws-3.3.4.jar at spark://d3553ba1dd4a:46729/jars/hadoop-aws-3.3.4.jar with timestamp 1762079398612
+[2025-11-02T10:29:58.983+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Executor: Starting executor ID driver on host d3553ba1dd4a
+[2025-11-02T10:29:58.984+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Executor: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-11-02T10:29:58.984+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Executor: Java version 11.0.28
+[2025-11-02T10:29:58.986+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-11-02T10:29:58.986+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@2536848e for default.
+[2025-11-02T10:29:58.991+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:58 INFO Executor: Fetching spark://d3553ba1dd4a:46729/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar with timestamp 1762079398612
+[2025-11-02T10:29:59.025+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO TransportClientFactory: Successfully created connection to d3553ba1dd4a/172.18.0.5:46729 after 13 ms (0 ms spent in bootstraps)
+[2025-11-02T10:29:59.028+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Utils: Fetching spark://d3553ba1dd4a:46729/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to /tmp/spark-1d8aee9e-9ec2-4f0d-98f7-94c8564f9eaa/userFiles-bf9b3369-8a03-46f7-b2d6-6a638a6f33e8/fetchFileTemp12338319329205599499.tmp
+[2025-11-02T10:29:59.100+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Executor: Adding file:/tmp/spark-1d8aee9e-9ec2-4f0d-98f7-94c8564f9eaa/userFiles-bf9b3369-8a03-46f7-b2d6-6a638a6f33e8/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to class loader default
+[2025-11-02T10:29:59.100+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Executor: Fetching spark://d3553ba1dd4a:46729/jars/aws-java-sdk-bundle-1.12.367.jar with timestamp 1762079398612
+[2025-11-02T10:29:59.101+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Utils: Fetching spark://d3553ba1dd4a:46729/jars/aws-java-sdk-bundle-1.12.367.jar to /tmp/spark-1d8aee9e-9ec2-4f0d-98f7-94c8564f9eaa/userFiles-bf9b3369-8a03-46f7-b2d6-6a638a6f33e8/fetchFileTemp8482979050507102315.tmp
+[2025-11-02T10:29:59.620+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Executor: Adding file:/tmp/spark-1d8aee9e-9ec2-4f0d-98f7-94c8564f9eaa/userFiles-bf9b3369-8a03-46f7-b2d6-6a638a6f33e8/aws-java-sdk-bundle-1.12.367.jar to class loader default
+[2025-11-02T10:29:59.620+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Executor: Fetching spark://d3553ba1dd4a:46729/jars/hadoop-aws-3.3.4.jar with timestamp 1762079398612
+[2025-11-02T10:29:59.620+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Utils: Fetching spark://d3553ba1dd4a:46729/jars/hadoop-aws-3.3.4.jar to /tmp/spark-1d8aee9e-9ec2-4f0d-98f7-94c8564f9eaa/userFiles-bf9b3369-8a03-46f7-b2d6-6a638a6f33e8/fetchFileTemp10580267326981841012.tmp
+[2025-11-02T10:29:59.678+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Executor: Adding file:/tmp/spark-1d8aee9e-9ec2-4f0d-98f7-94c8564f9eaa/userFiles-bf9b3369-8a03-46f7-b2d6-6a638a6f33e8/hadoop-aws-3.3.4.jar to class loader default
+[2025-11-02T10:29:59.685+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45967.
+[2025-11-02T10:29:59.688+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO NettyBlockTransferService: Server created on d3553ba1dd4a:45967
+[2025-11-02T10:29:59.688+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-11-02T10:29:59.690+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, d3553ba1dd4a, 45967, None)
+[2025-11-02T10:29:59.692+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO BlockManagerMasterEndpoint: Registering block manager d3553ba1dd4a:45967 with 434.4 MiB RAM, BlockManagerId(driver, d3553ba1dd4a, 45967, None)
+[2025-11-02T10:29:59.693+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, d3553ba1dd4a, 45967, None)
+[2025-11-02T10:29:59.697+0000] {spark_submit.py:491} INFO - 25/11/02 10:29:59 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, d3553ba1dd4a, 45967, None)
+[2025-11-02T10:30:01.286+0000] {spark_submit.py:491} INFO - 25/11/02 10:30:01 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+[2025-11-02T10:30:02.149+0000] {spark_submit.py:491} INFO - Created/verified taxi zones table
+[2025-11-02T10:30:02.149+0000] {spark_submit.py:491} INFO - Reading location data from: /opt/***/data/locations/nyc_taxi_zones.json
+[2025-11-02T10:30:03.749+0000] {spark_submit.py:491} INFO - Raw location data count: 16
+[2025-11-02T10:30:03.750+0000] {spark_submit.py:491} INFO - root
+[2025-11-02T10:30:03.753+0000] {spark_submit.py:491} INFO - |-- borough: string (nullable = true)
+[2025-11-02T10:30:03.753+0000] {spark_submit.py:491} INFO - |-- created_at: string (nullable = true)
+[2025-11-02T10:30:03.753+0000] {spark_submit.py:491} INFO - |-- is_business_district: boolean (nullable = true)
+[2025-11-02T10:30:03.753+0000] {spark_submit.py:491} INFO - |-- is_tourist_area: boolean (nullable = true)
+[2025-11-02T10:30:03.753+0000] {spark_submit.py:491} INFO - |-- lat: double (nullable = true)
+[2025-11-02T10:30:03.753+0000] {spark_submit.py:491} INFO - |-- location_id: long (nullable = true)
+[2025-11-02T10:30:03.754+0000] {spark_submit.py:491} INFO - |-- lon: double (nullable = true)
+[2025-11-02T10:30:03.754+0000] {spark_submit.py:491} INFO - |-- zone: string (nullable = true)
+[2025-11-02T10:30:03.754+0000] {spark_submit.py:491} INFO - |-- zone_type: string (nullable = true)
+[2025-11-02T10:30:03.754+0000] {spark_submit.py:491} INFO - 
+[2025-11-02T10:30:03.964+0000] {spark_submit.py:491} INFO - Processed location data count: 16
+[2025-11-02T10:32:32.726+0000] {spark_submit.py:491} INFO - 25/11/02 10:32:32 WARN S3AInstrumentation: Closing output stream statistics while data is still marked as pending upload in OutputStreamStatistics{counters=((op_abort.failures=0) (object_multipart_aborted.failures=0) (stream_write_queue_duration=0) (action_executor_acquired.failures=0) (op_hflush=0) (op_hsync=0) (object_multipart_aborted=0) (stream_write_exceptions=0) (stream_write_total_time=0) (action_executor_acquired=0) (stream_write_exceptions_completing_upload=0) (stream_write_total_data=0) (multipart_upload_completed=0) (stream_write_block_uploads=1) (stream_write_bytes=7398) (op_abort=0) (multipart_upload_completed.failures=0));
+[2025-11-02T10:32:32.728+0000] {spark_submit.py:491} INFO - gauges=((stream_write_block_uploads_data_pending=7398) (stream_write_block_uploads_pending=1));
+[2025-11-02T10:32:32.729+0000] {spark_submit.py:491} INFO - minimums=((op_abort.min=-1) (object_multipart_aborted.failures.min=-1) (op_abort.failures.min=-1) (multipart_upload_completed.min=-1) (multipart_upload_completed.failures.min=-1) (object_multipart_aborted.min=-1) (action_executor_acquired.failures.min=-1) (action_executor_acquired.min=-1));
+[2025-11-02T10:32:32.729+0000] {spark_submit.py:491} INFO - maximums=((object_multipart_aborted.max=-1) (action_executor_acquired.max=-1) (action_executor_acquired.failures.max=-1) (op_abort.max=-1) (op_abort.failures.max=-1) (multipart_upload_completed.failures.max=-1) (multipart_upload_completed.max=-1) (object_multipart_aborted.failures.max=-1));
+[2025-11-02T10:32:32.729+0000] {spark_submit.py:491} INFO - means=((multipart_upload_completed.failures.mean=(samples=0, sum=0, mean=0.0000)) (object_multipart_aborted.mean=(samples=0, sum=0, mean=0.0000)) (op_abort.mean=(samples=0, sum=0, mean=0.0000)) (op_abort.failures.mean=(samples=0, sum=0, mean=0.0000)) (action_executor_acquired.mean=(samples=0, sum=0, mean=0.0000)) (multipart_upload_completed.mean=(samples=0, sum=0, mean=0.0000)) (object_multipart_aborted.failures.mean=(samples=0, sum=0, mean=0.0000)) (action_executor_acquired.failures.mean=(samples=0, sum=0, mean=0.0000)));
+[2025-11-02T10:32:32.729+0000] {spark_submit.py:491} INFO - , blocksActive=0, blockUploadsCompleted=0, blocksAllocated=1, blocksReleased=1, blocksActivelyAllocated=0, transferDuration=0 ms, totalUploadDuration=0 ms, effectiveBandwidth=0.0 bytes/s}
+[2025-11-02T10:32:32.781+0000] {spark_submit.py:491} INFO - 25/11/02 10:32:32 WARN HadoopStreams: Unclosed output stream created by:
+[2025-11-02T10:32:32.781+0000] {spark_submit.py:491} INFO - org.apache.iceberg.hadoop.HadoopStreams$HadoopPositionOutputStream.<init>(HadoopStreams.java:152)
+[2025-11-02T10:32:32.781+0000] {spark_submit.py:491} INFO - org.apache.iceberg.hadoop.HadoopStreams.wrap(HadoopStreams.java:66)
+[2025-11-02T10:32:32.782+0000] {spark_submit.py:491} INFO - org.apache.iceberg.hadoop.HadoopOutputFile.createOrOverwrite(HadoopOutputFile.java:85)
+[2025-11-02T10:32:32.782+0000] {spark_submit.py:491} INFO - org.apache.iceberg.avro.AvroFileAppender.<init>(AvroFileAppender.java:56)
+[2025-11-02T10:32:32.782+0000] {spark_submit.py:491} INFO - org.apache.iceberg.avro.Avro$WriteBuilder.build(Avro.java:191)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestWriter$V2Writer.newAppender(ManifestWriter.java:243)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestWriter.<init>(ManifestWriter.java:58)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestWriter.<init>(ManifestWriter.java:34)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestWriter$V2Writer.<init>(ManifestWriter.java:220)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestFiles.write(ManifestFiles.java:164)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.SnapshotProducer.newManifestWriter(SnapshotProducer.java:502)
+[2025-11-02T10:32:32.783+0000] {spark_submit.py:491} INFO - org.apache.iceberg.MergingSnapshotProducer$DataFileFilterManager.newManifestWriter(MergingSnapshotProducer.java:1041)
+[2025-11-02T10:32:32.784+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestFilterManager.filterManifestWithDeletedFiles(ManifestFilterManager.java:414)
+[2025-11-02T10:32:32.784+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestFilterManager.filterManifest(ManifestFilterManager.java:319)
+[2025-11-02T10:32:32.784+0000] {spark_submit.py:491} INFO - org.apache.iceberg.ManifestFilterManager.lambda$filterManifests$0(ManifestFilterManager.java:195)
+[2025-11-02T10:32:32.785+0000] {spark_submit.py:491} INFO - org.apache.iceberg.util.Tasks$Builder.runTaskWithRetry(Tasks.java:413)
+[2025-11-02T10:32:32.785+0000] {spark_submit.py:491} INFO - org.apache.iceberg.util.Tasks$Builder.access$300(Tasks.java:69)
+[2025-11-02T10:32:32.785+0000] {spark_submit.py:491} INFO - org.apache.iceberg.util.Tasks$Builder$1.run(Tasks.java:315)
+[2025-11-02T10:32:32.785+0000] {spark_submit.py:491} INFO - java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[2025-11-02T10:32:32.785+0000] {spark_submit.py:491} INFO - java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[2025-11-02T10:32:32.786+0000] {spark_submit.py:491} INFO - java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[2025-11-02T10:32:32.786+0000] {spark_submit.py:491} INFO - java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[2025-11-02T10:32:32.786+0000] {spark_submit.py:491} INFO - java.base/java.lang.Thread.run(Thread.java:829)
+[2025-11-02T10:32:32.818+0000] {spark_submit.py:491} INFO - Error in location ETL job: An error occurred while calling o48.sql.
+[2025-11-02T10:32:32.819+0000] {spark_submit.py:491} INFO - : org.apache.iceberg.exceptions.RuntimeIOException: Failed to close manifest writer
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.ManifestFilterManager.filterManifestWithDeletedFiles(ManifestFilterManager.java:478)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.ManifestFilterManager.filterManifest(ManifestFilterManager.java:319)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.ManifestFilterManager.lambda$filterManifests$0(ManifestFilterManager.java:195)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.util.Tasks$Builder.runTaskWithRetry(Tasks.java:413)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.util.Tasks$Builder.access$300(Tasks.java:69)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.util.Tasks$Builder$1.run(Tasks.java:315)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[2025-11-02T10:32:32.821+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - Caused by: org.apache.hadoop.fs.s3a.AWSS3IOException: Writing Object on warehouse/reference/taxi_zones/metadata/500ed00c-e079-47d8-9d57-704ab819f371-m0.avro: com.amazonaws.services.s3.model.AmazonS3Exception: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed. (Service: Amazon S3; Status Code: 507; Error Code: XMinioStorageFull; Request ID: 18742A046D6A6523; S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8; Proxy: null), S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8:XMinioStorageFull: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed. (Service: Amazon S3; Status Code: 507; Error Code: XMinioStorageFull; Request ID: 18742A046D6A6523; S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8; Proxy: null)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3AUtils.translateException(S3AUtils.java:320)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.once(Invoker.java:119)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.lambda$retry$4(Invoker.java:322)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.retryUntranslated(Invoker.java:414)
+[2025-11-02T10:32:32.822+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.retry(Invoker.java:318)
+[2025-11-02T10:32:32.823+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.retry(Invoker.java:293)
+[2025-11-02T10:32:32.823+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.WriteOperationHelper.retry(WriteOperationHelper.java:208)
+[2025-11-02T10:32:32.824+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.WriteOperationHelper.putObject(WriteOperationHelper.java:563)
+[2025-11-02T10:32:32.824+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3ABlockOutputStream.lambda$putObject$0(S3ABlockOutputStream.java:562)
+[2025-11-02T10:32:32.825+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.thirdparty.com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:125)
+[2025-11-02T10:32:32.826+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.thirdparty.com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:69)
+[2025-11-02T10:32:32.826+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.thirdparty.com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:78)
+[2025-11-02T10:32:32.826+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.util.SemaphoredDelegatingExecutor$RunnableWithPermitRelease.run(SemaphoredDelegatingExecutor.java:196)
+[2025-11-02T10:32:32.826+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.util.SemaphoredDelegatingExecutor$RunnableWithPermitRelease.run(SemaphoredDelegatingExecutor.java:196)
+[2025-11-02T10:32:32.826+0000] {spark_submit.py:491} INFO - ... 3 more
+[2025-11-02T10:32:32.826+0000] {spark_submit.py:491} INFO - Caused by: com.amazonaws.services.s3.model.AmazonS3Exception: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed. (Service: Amazon S3; Status Code: 507; Error Code: XMinioStorageFull; Request ID: 18742A046D6A6523; S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8; Proxy: null), S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1879)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleServiceErrorResponse(AmazonHttpClient.java:1418)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1387)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:1157)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:814)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:781)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:755)
+[2025-11-02T10:32:32.827+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$500(AmazonHttpClient.java:715)
+[2025-11-02T10:32:32.828+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:697)
+[2025-11-02T10:32:32.828+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:561)
+[2025-11-02T10:32:32.828+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:541)
+[2025-11-02T10:32:32.828+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:5456)
+[2025-11-02T10:32:32.829+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:5403)
+[2025-11-02T10:32:32.829+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.access$300(AmazonS3Client.java:421)
+[2025-11-02T10:32:32.829+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client$PutObjectStrategy.invokeServiceCall(AmazonS3Client.java:6532)
+[2025-11-02T10:32:32.829+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.uploadObject(AmazonS3Client.java:1861)
+[2025-11-02T10:32:32.829+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.putObject(AmazonS3Client.java:1821)
+[2025-11-02T10:32:32.830+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3AFileSystem.lambda$putObjectDirect$17(S3AFileSystem.java:2877)
+[2025-11-02T10:32:32.830+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.statistics.impl.IOStatisticsBinding.trackDurationOfSupplier(IOStatisticsBinding.java:604)
+[2025-11-02T10:32:32.830+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3AFileSystem.putObjectDirect(S3AFileSystem.java:2874)
+[2025-11-02T10:32:32.830+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.WriteOperationHelper.lambda$putObject$7(WriteOperationHelper.java:566)
+[2025-11-02T10:32:32.830+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.store.audit.AuditingFunctions.lambda$withinAuditSpan$0(AuditingFunctions.java:62)
+[2025-11-02T10:32:32.830+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.once(Invoker.java:117)
+[2025-11-02T10:32:32.833+0000] {spark_submit.py:491} INFO - ... 15 more
+[2025-11-02T10:32:32.833+0000] {spark_submit.py:491} INFO - 
+[2025-11-02T10:32:33.345+0000] {spark_submit.py:491} INFO - Traceback (most recent call last):
+[2025-11-02T10:32:33.347+0000] {spark_submit.py:491} INFO - File "/opt/***/dags/spark_jobs/location_to_iceberg.py", line 140, in <module>
+[2025-11-02T10:32:33.347+0000] {spark_submit.py:491} INFO - main()
+[2025-11-02T10:32:33.348+0000] {spark_submit.py:491} INFO - File "/opt/***/dags/spark_jobs/location_to_iceberg.py", line 129, in main
+[2025-11-02T10:32:33.348+0000] {spark_submit.py:491} INFO - process_location_data(spark, input_path)
+[2025-11-02T10:32:33.348+0000] {spark_submit.py:491} INFO - File "/opt/***/dags/spark_jobs/location_to_iceberg.py", line 91, in process_location_data
+[2025-11-02T10:32:33.348+0000] {spark_submit.py:491} INFO - spark.sql("DELETE FROM iceberg.reference.taxi_zones")
+[2025-11-02T10:32:33.349+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 1631, in sql
+[2025-11-02T10:32:33.349+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-11-02T10:32:33.349+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 179, in deco
+[2025-11-02T10:32:33.349+0000] {spark_submit.py:491} INFO - File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+[2025-11-02T10:32:33.350+0000] {spark_submit.py:491} INFO - py4j.protocol.Py4JJavaError: An error occurred while calling o48.sql.
+[2025-11-02T10:32:33.350+0000] {spark_submit.py:491} INFO - : org.apache.iceberg.exceptions.RuntimeIOException: Failed to close manifest writer
+[2025-11-02T10:32:33.350+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.ManifestFilterManager.filterManifestWithDeletedFiles(ManifestFilterManager.java:478)
+[2025-11-02T10:32:33.351+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.ManifestFilterManager.filterManifest(ManifestFilterManager.java:319)
+[2025-11-02T10:32:33.351+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.ManifestFilterManager.lambda$filterManifests$0(ManifestFilterManager.java:195)
+[2025-11-02T10:32:33.351+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.util.Tasks$Builder.runTaskWithRetry(Tasks.java:413)
+[2025-11-02T10:32:33.351+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.util.Tasks$Builder.access$300(Tasks.java:69)
+[2025-11-02T10:32:33.352+0000] {spark_submit.py:491} INFO - at org.apache.iceberg.util.Tasks$Builder$1.run(Tasks.java:315)
+[2025-11-02T10:32:33.352+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[2025-11-02T10:32:33.352+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[2025-11-02T10:32:33.352+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[2025-11-02T10:32:33.353+0000] {spark_submit.py:491} INFO - at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[2025-11-02T10:32:33.353+0000] {spark_submit.py:491} INFO - at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-11-02T10:32:33.353+0000] {spark_submit.py:491} INFO - Caused by: org.apache.hadoop.fs.s3a.AWSS3IOException: Writing Object on warehouse/reference/taxi_zones/metadata/500ed00c-e079-47d8-9d57-704ab819f371-m0.avro: com.amazonaws.services.s3.model.AmazonS3Exception: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed. (Service: Amazon S3; Status Code: 507; Error Code: XMinioStorageFull; Request ID: 18742A046D6A6523; S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8; Proxy: null), S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8:XMinioStorageFull: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed. (Service: Amazon S3; Status Code: 507; Error Code: XMinioStorageFull; Request ID: 18742A046D6A6523; S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8; Proxy: null)
+[2025-11-02T10:32:33.353+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3AUtils.translateException(S3AUtils.java:320)
+[2025-11-02T10:32:33.354+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.once(Invoker.java:119)
+[2025-11-02T10:32:33.354+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.lambda$retry$4(Invoker.java:322)
+[2025-11-02T10:32:33.354+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.retryUntranslated(Invoker.java:414)
+[2025-11-02T10:32:33.354+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.retry(Invoker.java:318)
+[2025-11-02T10:32:33.354+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.retry(Invoker.java:293)
+[2025-11-02T10:32:33.355+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.WriteOperationHelper.retry(WriteOperationHelper.java:208)
+[2025-11-02T10:32:33.355+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.WriteOperationHelper.putObject(WriteOperationHelper.java:563)
+[2025-11-02T10:32:33.355+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3ABlockOutputStream.lambda$putObject$0(S3ABlockOutputStream.java:562)
+[2025-11-02T10:32:33.355+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.thirdparty.com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:125)
+[2025-11-02T10:32:33.355+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.thirdparty.com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:69)
+[2025-11-02T10:32:33.356+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.thirdparty.com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:78)
+[2025-11-02T10:32:33.356+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.util.SemaphoredDelegatingExecutor$RunnableWithPermitRelease.run(SemaphoredDelegatingExecutor.java:196)
+[2025-11-02T10:32:33.356+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.util.SemaphoredDelegatingExecutor$RunnableWithPermitRelease.run(SemaphoredDelegatingExecutor.java:196)
+[2025-11-02T10:32:33.356+0000] {spark_submit.py:491} INFO - ... 3 more
+[2025-11-02T10:32:33.356+0000] {spark_submit.py:491} INFO - Caused by: com.amazonaws.services.s3.model.AmazonS3Exception: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed. (Service: Amazon S3; Status Code: 507; Error Code: XMinioStorageFull; Request ID: 18742A046D6A6523; S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8; Proxy: null), S3 Extended Request ID: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8
+[2025-11-02T10:32:33.357+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleErrorResponse(AmazonHttpClient.java:1879)
+[2025-11-02T10:32:33.357+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.handleServiceErrorResponse(AmazonHttpClient.java:1418)
+[2025-11-02T10:32:33.357+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeOneRequest(AmazonHttpClient.java:1387)
+[2025-11-02T10:32:33.357+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeHelper(AmazonHttpClient.java:1157)
+[2025-11-02T10:32:33.358+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:814)
+[2025-11-02T10:32:33.358+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:781)
+[2025-11-02T10:32:33.358+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:755)
+[2025-11-02T10:32:33.358+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$500(AmazonHttpClient.java:715)
+[2025-11-02T10:32:33.358+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:697)
+[2025-11-02T10:32:33.359+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:561)
+[2025-11-02T10:32:33.359+0000] {spark_submit.py:491} INFO - at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:541)
+[2025-11-02T10:32:33.359+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:5456)
+[2025-11-02T10:32:33.359+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:5403)
+[2025-11-02T10:32:33.360+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.access$300(AmazonS3Client.java:421)
+[2025-11-02T10:32:33.360+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client$PutObjectStrategy.invokeServiceCall(AmazonS3Client.java:6532)
+[2025-11-02T10:32:33.360+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.uploadObject(AmazonS3Client.java:1861)
+[2025-11-02T10:32:33.360+0000] {spark_submit.py:491} INFO - at com.amazonaws.services.s3.AmazonS3Client.putObject(AmazonS3Client.java:1821)
+[2025-11-02T10:32:33.360+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3AFileSystem.lambda$putObjectDirect$17(S3AFileSystem.java:2877)
+[2025-11-02T10:32:33.360+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.statistics.impl.IOStatisticsBinding.trackDurationOfSupplier(IOStatisticsBinding.java:604)
+[2025-11-02T10:32:33.361+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.S3AFileSystem.putObjectDirect(S3AFileSystem.java:2874)
+[2025-11-02T10:32:33.361+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.WriteOperationHelper.lambda$putObject$7(WriteOperationHelper.java:566)
+[2025-11-02T10:32:33.361+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.store.audit.AuditingFunctions.lambda$withinAuditSpan$0(AuditingFunctions.java:62)
+[2025-11-02T10:32:33.361+0000] {spark_submit.py:491} INFO - at org.apache.hadoop.fs.s3a.Invoker.once(Invoker.java:117)
+[2025-11-02T10:32:33.362+0000] {spark_submit.py:491} INFO - ... 15 more
+[2025-11-02T10:32:33.362+0000] {spark_submit.py:491} INFO - 
+[2025-11-02T10:32:33.484+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 156, in execute
+    self._hook.submit(self._application)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 422, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: /opt/bitnami/spark/bin/spark-submit --master spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/***/jars/hadoop-aws-3.3.4.jar --name arrow-spark /opt/***/dags/spark_jobs/location_to_iceberg.py /opt/***/data/locations/nyc_taxi_zones.json. Error code is: 1.
+[2025-11-02T10:32:33.488+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=nyc_weather_etl, task_id=spark_process_location_to_iceberg, execution_date=20251102T092954, start_date=20251102T102957, end_date=20251102T103233
+[2025-11-02T10:32:33.496+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 142 for task spark_process_location_to_iceberg (Cannot execute: /opt/bitnami/spark/bin/spark-submit --master spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/***/jars/hadoop-aws-3.3.4.jar --name arrow-spark /opt/***/dags/spark_jobs/location_to_iceberg.py /opt/***/data/locations/nyc_taxi_zones.json. Error code is: 1.; 27925)
+[2025-11-02T10:32:33.542+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-11-02T10:32:33.559+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

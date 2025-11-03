@@ -1,0 +1,106 @@
+[2025-11-03T04:17:22.112+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_iceberg_etl.spark_process_to_iceberg manual__2025-11-03T04:17:08.718824+00:00 [queued]>
+[2025-11-03T04:17:22.115+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_iceberg_etl.spark_process_to_iceberg manual__2025-11-03T04:17:08.718824+00:00 [queued]>
+[2025-11-03T04:17:22.115+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-11-03T04:17:22.119+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): spark_process_to_iceberg> on 2025-11-03 04:17:08.718824+00:00
+[2025-11-03T04:17:22.122+0000] {standard_task_runner.py:57} INFO - Started process 15599 to run task
+[2025-11-03T04:17:22.124+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_iceberg_etl', 'spark_process_to_iceberg', 'manual__2025-11-03T04:17:08.718824+00:00', '--job-id', '135', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_iceberg_etl.py', '--cfg-path', '/tmp/tmpp9p1ken2']
+[2025-11-03T04:17:22.125+0000] {standard_task_runner.py:85} INFO - Job 135: Subtask spark_process_to_iceberg
+[2025-11-03T04:17:22.144+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_taxi_iceberg_etl.spark_process_to_iceberg manual__2025-11-03T04:17:08.718824+00:00 [running]> on host ec57452a9f33
+[2025-11-03T04:17:22.265+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_taxi_iceberg_etl' AIRFLOW_CTX_TASK_ID='spark_process_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-11-03T04:17:08.718824+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-03T04:17:08.718824+00:00'
+[2025-11-03T04:17:22.266+0000] {base.py:73} INFO - Using connection ID 'spark_default' for task execution.
+[2025-11-03T04:17:22.267+0000] {spark_submit.py:340} INFO - Spark-Submit cmd: /opt/bitnami/spark/bin/spark-submit --master spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/***/jars/hadoop-aws-3.3.4.jar --name arrow-spark /opt/***/dags/spark_jobs/nyc_taxi_to_iceberg.py /opt/***/data/raw/yellow_tripdata_2025-11.parquet
+[2025-11-03T04:17:22.983+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:22 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-11-03T04:17:23.457+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: Running Spark version 3.5.1
+[2025-11-03T04:17:23.459+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-11-03T04:17:23.459+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: Java version 11.0.28
+[2025-11-03T04:17:23.467+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO ResourceUtils: ==============================================================
+[2025-11-03T04:17:23.468+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-11-03T04:17:23.468+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO ResourceUtils: ==============================================================
+[2025-11-03T04:17:23.472+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: Submitted application: NYC Taxi to Iceberg ETL
+[2025-11-03T04:17:23.474+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-11-03T04:17:23.478+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO ResourceProfile: Limiting resource is cpu
+[2025-11-03T04:17:23.478+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-11-03T04:17:23.501+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SecurityManager: Changing view acls to: ***
+[2025-11-03T04:17:23.502+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SecurityManager: Changing modify acls to: ***
+[2025-11-03T04:17:23.502+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SecurityManager: Changing view acls groups to:
+[2025-11-03T04:17:23.502+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SecurityManager: Changing modify acls groups to:
+[2025-11-03T04:17:23.503+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-11-03T04:17:23.580+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Utils: Successfully started service 'sparkDriver' on port 35589.
+[2025-11-03T04:17:23.591+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkEnv: Registering MapOutputTracker
+[2025-11-03T04:17:23.602+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkEnv: Registering BlockManagerMaster
+[2025-11-03T04:17:23.610+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-11-03T04:17:23.610+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-11-03T04:17:23.612+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-11-03T04:17:23.620+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-4d8fa5d4-a885-4d03-a691-d35477e183e6
+[2025-11-03T04:17:23.626+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-11-03T04:17:23.631+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-11-03T04:17:23.680+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-11-03T04:17:23.701+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2025-11-03T04:17:23.715+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: Added JAR file:///opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar at spark://ec57452a9f33:35589/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar with timestamp 1762143443454
+[2025-11-03T04:17:23.715+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: Added JAR file:///opt/***/jars/aws-java-sdk-bundle-1.12.367.jar at spark://ec57452a9f33:35589/jars/aws-java-sdk-bundle-1.12.367.jar with timestamp 1762143443454
+[2025-11-03T04:17:23.715+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO SparkContext: Added JAR file:///opt/***/jars/hadoop-aws-3.3.4.jar at spark://ec57452a9f33:35589/jars/hadoop-aws-3.3.4.jar with timestamp 1762143443454
+[2025-11-03T04:17:23.740+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Starting executor ID driver on host ec57452a9f33
+[2025-11-03T04:17:23.740+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-11-03T04:17:23.740+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Java version 11.0.28
+[2025-11-03T04:17:23.742+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-11-03T04:17:23.743+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@6887ccc6 for default.
+[2025-11-03T04:17:23.746+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Fetching spark://ec57452a9f33:35589/jars/hadoop-aws-3.3.4.jar with timestamp 1762143443454
+[2025-11-03T04:17:23.766+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO TransportClientFactory: Successfully created connection to ec57452a9f33/172.18.0.4:35589 after 10 ms (0 ms spent in bootstraps)
+[2025-11-03T04:17:23.769+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Utils: Fetching spark://ec57452a9f33:35589/jars/hadoop-aws-3.3.4.jar to /tmp/spark-aa5967e3-7074-4638-a1a7-6aa28268eaf8/userFiles-8c7ac568-79e5-4f6f-904d-050a762a3b27/fetchFileTemp2163181079003326988.tmp
+[2025-11-03T04:17:23.781+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Adding file:/tmp/spark-aa5967e3-7074-4638-a1a7-6aa28268eaf8/userFiles-8c7ac568-79e5-4f6f-904d-050a762a3b27/hadoop-aws-3.3.4.jar to class loader default
+[2025-11-03T04:17:23.781+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Fetching spark://ec57452a9f33:35589/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar with timestamp 1762143443454
+[2025-11-03T04:17:23.781+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Utils: Fetching spark://ec57452a9f33:35589/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to /tmp/spark-aa5967e3-7074-4638-a1a7-6aa28268eaf8/userFiles-8c7ac568-79e5-4f6f-904d-050a762a3b27/fetchFileTemp10622822673644590689.tmp
+[2025-11-03T04:17:23.817+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Adding file:/tmp/spark-aa5967e3-7074-4638-a1a7-6aa28268eaf8/userFiles-8c7ac568-79e5-4f6f-904d-050a762a3b27/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to class loader default
+[2025-11-03T04:17:23.817+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Executor: Fetching spark://ec57452a9f33:35589/jars/aws-java-sdk-bundle-1.12.367.jar with timestamp 1762143443454
+[2025-11-03T04:17:23.817+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:23 INFO Utils: Fetching spark://ec57452a9f33:35589/jars/aws-java-sdk-bundle-1.12.367.jar to /tmp/spark-aa5967e3-7074-4638-a1a7-6aa28268eaf8/userFiles-8c7ac568-79e5-4f6f-904d-050a762a3b27/fetchFileTemp6469123332119130467.tmp
+[2025-11-03T04:17:24.084+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO Executor: Adding file:/tmp/spark-aa5967e3-7074-4638-a1a7-6aa28268eaf8/userFiles-8c7ac568-79e5-4f6f-904d-050a762a3b27/aws-java-sdk-bundle-1.12.367.jar to class loader default
+[2025-11-03T04:17:24.096+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41309.
+[2025-11-03T04:17:24.096+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO NettyBlockTransferService: Server created on ec57452a9f33:41309
+[2025-11-03T04:17:24.099+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-11-03T04:17:24.107+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ec57452a9f33, 41309, None)
+[2025-11-03T04:17:24.109+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO BlockManagerMasterEndpoint: Registering block manager ec57452a9f33:41309 with 434.4 MiB RAM, BlockManagerId(driver, ec57452a9f33, 41309, None)
+[2025-11-03T04:17:24.110+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ec57452a9f33, 41309, None)
+[2025-11-03T04:17:24.111+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:24 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ec57452a9f33, 41309, None)
+[2025-11-03T04:17:25.236+0000] {spark_submit.py:491} INFO - 25/11/03 04:17:25 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+[2025-11-03T04:17:25.905+0000] {spark_submit.py:491} INFO - Created/verified trips table
+[2025-11-03T04:17:25.906+0000] {spark_submit.py:491} INFO - Reading data from: /opt/***/data/raw/yellow_tripdata_2025-11.parquet
+[2025-11-03T04:17:26.861+0000] {spark_submit.py:491} INFO - Raw data count: 3252717
+[2025-11-03T04:17:26.862+0000] {spark_submit.py:491} INFO - root
+[2025-11-03T04:17:26.862+0000] {spark_submit.py:491} INFO - |-- VendorID: long (nullable = true)
+[2025-11-03T04:17:26.862+0000] {spark_submit.py:491} INFO - |-- tpep_pickup_datetime: timestamp_ntz (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- tpep_dropoff_datetime: timestamp_ntz (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- passenger_count: double (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- trip_distance: double (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- RatecodeID: double (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- store_and_fwd_flag: string (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- PULocationID: long (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- DOLocationID: long (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- payment_type: long (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- fare_amount: double (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- extra: double (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- mta_tax: double (nullable = true)
+[2025-11-03T04:17:26.863+0000] {spark_submit.py:491} INFO - |-- tip_amount: double (nullable = true)
+[2025-11-03T04:17:26.864+0000] {spark_submit.py:491} INFO - |-- tolls_amount: double (nullable = true)
+[2025-11-03T04:17:26.864+0000] {spark_submit.py:491} INFO - |-- improvement_surcharge: double (nullable = true)
+[2025-11-03T04:17:26.864+0000] {spark_submit.py:491} INFO - |-- total_amount: double (nullable = true)
+[2025-11-03T04:17:26.864+0000] {spark_submit.py:491} INFO - |-- congestion_surcharge: double (nullable = true)
+[2025-11-03T04:17:26.864+0000] {spark_submit.py:491} INFO - |-- airport_fee: double (nullable = true)
+[2025-11-03T04:17:26.864+0000] {spark_submit.py:491} INFO - 
+[2025-11-03T04:17:27.764+0000] {spark_submit.py:491} INFO - Processed data count: 3019653
+[2025-11-03T04:17:34.203+0000] {spark_submit.py:491} INFO - Successfully wrote data to Iceberg table
+[2025-11-03T04:17:36.423+0000] {spark_submit.py:491} INFO - +----+-----+----------+------------------+------------------+
+[2025-11-03T04:17:36.424+0000] {spark_submit.py:491} INFO - |year|month|trip_count|      avg_distance|        avg_amount|
+[2025-11-03T04:17:36.424+0000] {spark_submit.py:491} INFO - +----+-----+----------+------------------+------------------+
+[2025-11-03T04:17:36.424+0000] {spark_submit.py:491} INFO - |2022|   12|       399|  2.86298245614035|20.792280701754393|
+[2025-11-03T04:17:36.425+0000] {spark_submit.py:491} INFO - |2022|   11|  21136913|3.6727699773374045|21.917788524301486|
+[2025-11-03T04:17:36.425+0000] {spark_submit.py:491} INFO - |2022|   10|       224|          5.545625|26.396562499999987|
+[2025-11-03T04:17:36.427+0000] {spark_submit.py:491} INFO - |2009|    1|        14|2.9550000000000005|18.550000000000004|
+[2025-11-03T04:17:36.428+0000] {spark_submit.py:491} INFO - |2008|   12|        14|             6.095|29.534999999999997|
+[2025-11-03T04:17:36.428+0000] {spark_submit.py:491} INFO - |2002|   12|         7|              8.43|             47.31|
+[2025-11-03T04:17:36.429+0000] {spark_submit.py:491} INFO - +----+-----+----------+------------------+------------------+
+[2025-11-03T04:17:36.429+0000] {spark_submit.py:491} INFO - 
+[2025-11-03T04:17:36.679+0000] {spark_submit.py:491} INFO - Created daily summary table
+[2025-11-03T04:17:36.679+0000] {spark_submit.py:491} INFO - ETL job completed successfully!
+[2025-11-03T04:17:36.805+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=nyc_taxi_iceberg_etl, task_id=spark_process_to_iceberg, execution_date=20251103T041708, start_date=20251103T041722, end_date=20251103T041736
+[2025-11-03T04:17:36.848+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-11-03T04:17:36.861+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

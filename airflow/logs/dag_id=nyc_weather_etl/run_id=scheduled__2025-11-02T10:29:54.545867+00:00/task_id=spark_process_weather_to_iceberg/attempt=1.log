@@ -1,0 +1,98 @@
+[2025-11-02T11:29:57.097+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_weather_etl.spark_process_weather_to_iceberg scheduled__2025-11-02T10:29:54.545867+00:00 [queued]>
+[2025-11-02T11:29:57.102+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_weather_etl.spark_process_weather_to_iceberg scheduled__2025-11-02T10:29:54.545867+00:00 [queued]>
+[2025-11-02T11:29:57.103+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-11-02T11:29:57.109+0000] {taskinstance.py:1380} INFO - Executing <Task(SparkSubmitOperator): spark_process_weather_to_iceberg> on 2025-11-02 10:29:54.545867+00:00
+[2025-11-02T11:29:57.111+0000] {standard_task_runner.py:57} INFO - Started process 33937 to run task
+[2025-11-02T11:29:57.112+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'nyc_weather_etl', 'spark_process_weather_to_iceberg', 'scheduled__2025-11-02T10:29:54.545867+00:00', '--job-id', '151', '--raw', '--subdir', 'DAGS_FOLDER/nyc_weather_etl.py', '--cfg-path', '/tmp/tmpblqoldjx']
+[2025-11-02T11:29:57.114+0000] {standard_task_runner.py:85} INFO - Job 151: Subtask spark_process_weather_to_iceberg
+[2025-11-02T11:29:57.132+0000] {task_command.py:415} INFO - Running <TaskInstance: nyc_weather_etl.spark_process_weather_to_iceberg scheduled__2025-11-02T10:29:54.545867+00:00 [running]> on host d3553ba1dd4a
+[2025-11-02T11:29:57.258+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='nyc_weather_etl' AIRFLOW_CTX_TASK_ID='spark_process_weather_to_iceberg' AIRFLOW_CTX_EXECUTION_DATE='2025-11-02T10:29:54.545867+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-02T10:29:54.545867+00:00'
+[2025-11-02T11:29:57.258+0000] {base.py:73} INFO - Using connection ID 'spark_default' for task execution.
+[2025-11-02T11:29:57.259+0000] {spark_submit.py:340} INFO - Spark-Submit cmd: /opt/bitnami/spark/bin/spark-submit --master spark-master:7077 --conf spark.master=spark://spark-master:7077 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.type=hive --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog --conf spark.sql.catalog.iceberg.type=hadoop --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 --conf spark.hadoop.fs.s3a.access.key=admin --conf spark.hadoop.fs.s3a.secret.key=****** --conf spark.hadoop.fs.s3a.path.style.access=true --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem --jars /opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/***/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/***/jars/hadoop-aws-3.3.4.jar --name arrow-spark /opt/***/dags/spark_jobs/weather_to_iceberg.py /opt/***/data/weather/weather_data_20251102_11.json
+[2025-11-02T11:29:58.079+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-11-02T11:29:58.737+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkContext: Running Spark version 3.5.1
+[2025-11-02T11:29:58.738+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkContext: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-11-02T11:29:58.738+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkContext: Java version 11.0.28
+[2025-11-02T11:29:58.749+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO ResourceUtils: ==============================================================
+[2025-11-02T11:29:58.750+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2025-11-02T11:29:58.751+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO ResourceUtils: ==============================================================
+[2025-11-02T11:29:58.755+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkContext: Submitted application: Weather to Iceberg ETL
+[2025-11-02T11:29:58.757+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2025-11-02T11:29:58.762+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO ResourceProfile: Limiting resource is cpu
+[2025-11-02T11:29:58.762+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2025-11-02T11:29:58.790+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SecurityManager: Changing view acls to: ***
+[2025-11-02T11:29:58.790+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SecurityManager: Changing modify acls to: ***
+[2025-11-02T11:29:58.790+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SecurityManager: Changing view acls groups to:
+[2025-11-02T11:29:58.791+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SecurityManager: Changing modify acls groups to:
+[2025-11-02T11:29:58.791+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: ***; groups with view permissions: EMPTY; users with modify permissions: ***; groups with modify permissions: EMPTY
+[2025-11-02T11:29:58.884+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO Utils: Successfully started service 'sparkDriver' on port 46049.
+[2025-11-02T11:29:58.897+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkEnv: Registering MapOutputTracker
+[2025-11-02T11:29:58.911+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkEnv: Registering BlockManagerMaster
+[2025-11-02T11:29:58.922+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2025-11-02T11:29:58.924+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2025-11-02T11:29:58.924+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2025-11-02T11:29:58.933+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-fc5da870-5ad8-4aac-8744-b47b57277edc
+[2025-11-02T11:29:58.938+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2025-11-02T11:29:58.944+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO SparkEnv: Registering OutputCommitCoordinator
+[2025-11-02T11:29:58.997+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:58 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2025-11-02T11:29:59.021+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+[2025-11-02T11:29:59.025+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+[2025-11-02T11:29:59.043+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO SparkContext: Added JAR file:///opt/***/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar at spark://d3553ba1dd4a:46049/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar with timestamp 1762082998733
+[2025-11-02T11:29:59.043+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO SparkContext: Added JAR file:///opt/***/jars/aws-java-sdk-bundle-1.12.367.jar at spark://d3553ba1dd4a:46049/jars/aws-java-sdk-bundle-1.12.367.jar with timestamp 1762082998733
+[2025-11-02T11:29:59.043+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO SparkContext: Added JAR file:///opt/***/jars/hadoop-aws-3.3.4.jar at spark://d3553ba1dd4a:46049/jars/hadoop-aws-3.3.4.jar with timestamp 1762082998733
+[2025-11-02T11:29:59.072+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Starting executor ID driver on host d3553ba1dd4a
+[2025-11-02T11:29:59.072+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: OS info Linux, 6.10.14-linuxkit, aarch64
+[2025-11-02T11:29:59.073+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Java version 11.0.28
+[2025-11-02T11:29:59.074+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2025-11-02T11:29:59.075+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@598ec672 for default.
+[2025-11-02T11:29:59.092+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Fetching spark://d3553ba1dd4a:46049/jars/hadoop-aws-3.3.4.jar with timestamp 1762082998733
+[2025-11-02T11:29:59.118+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO TransportClientFactory: Successfully created connection to d3553ba1dd4a/172.18.0.5:46049 after 14 ms (0 ms spent in bootstraps)
+[2025-11-02T11:29:59.124+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Utils: Fetching spark://d3553ba1dd4a:46049/jars/hadoop-aws-3.3.4.jar to /tmp/spark-6f14f14d-a91f-4916-8e3f-ef5f70f9ea35/userFiles-6b46567b-6284-4485-b094-e52f3f92bc94/fetchFileTemp9350708619348159425.tmp
+[2025-11-02T11:29:59.148+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Adding file:/tmp/spark-6f14f14d-a91f-4916-8e3f-ef5f70f9ea35/userFiles-6b46567b-6284-4485-b094-e52f3f92bc94/hadoop-aws-3.3.4.jar to class loader default
+[2025-11-02T11:29:59.149+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Fetching spark://d3553ba1dd4a:46049/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar with timestamp 1762082998733
+[2025-11-02T11:29:59.149+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Utils: Fetching spark://d3553ba1dd4a:46049/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to /tmp/spark-6f14f14d-a91f-4916-8e3f-ef5f70f9ea35/userFiles-6b46567b-6284-4485-b094-e52f3f92bc94/fetchFileTemp2741310781393006040.tmp
+[2025-11-02T11:29:59.222+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Adding file:/tmp/spark-6f14f14d-a91f-4916-8e3f-ef5f70f9ea35/userFiles-6b46567b-6284-4485-b094-e52f3f92bc94/iceberg-spark-runtime-3.5_2.12-1.4.2.jar to class loader default
+[2025-11-02T11:29:59.223+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Executor: Fetching spark://d3553ba1dd4a:46049/jars/aws-java-sdk-bundle-1.12.367.jar with timestamp 1762082998733
+[2025-11-02T11:29:59.223+0000] {spark_submit.py:491} INFO - 25/11/02 11:29:59 INFO Utils: Fetching spark://d3553ba1dd4a:46049/jars/aws-java-sdk-bundle-1.12.367.jar to /tmp/spark-6f14f14d-a91f-4916-8e3f-ef5f70f9ea35/userFiles-6b46567b-6284-4485-b094-e52f3f92bc94/fetchFileTemp10778944512602005404.tmp
+[2025-11-02T11:30:00.015+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO Executor: Adding file:/tmp/spark-6f14f14d-a91f-4916-8e3f-ef5f70f9ea35/userFiles-6b46567b-6284-4485-b094-e52f3f92bc94/aws-java-sdk-bundle-1.12.367.jar to class loader default
+[2025-11-02T11:30:00.026+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 44195.
+[2025-11-02T11:30:00.030+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO NettyBlockTransferService: Server created on d3553ba1dd4a:44195
+[2025-11-02T11:30:00.030+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2025-11-02T11:30:00.033+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, d3553ba1dd4a, 44195, None)
+[2025-11-02T11:30:00.039+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO BlockManagerMasterEndpoint: Registering block manager d3553ba1dd4a:44195 with 434.4 MiB RAM, BlockManagerId(driver, d3553ba1dd4a, 44195, None)
+[2025-11-02T11:30:00.041+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, d3553ba1dd4a, 44195, None)
+[2025-11-02T11:30:00.043+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:00 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, d3553ba1dd4a, 44195, None)
+[2025-11-02T11:30:01.918+0000] {spark_submit.py:491} INFO - 25/11/02 11:30:01 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+[2025-11-02T11:30:02.785+0000] {spark_submit.py:491} INFO - Created/verified weather table
+[2025-11-02T11:30:02.785+0000] {spark_submit.py:491} INFO - Reading weather data from: /opt/***/data/weather/weather_data_20251102_11.json
+[2025-11-02T11:30:04.253+0000] {spark_submit.py:491} INFO - Raw weather data count: 24
+[2025-11-02T11:30:04.255+0000] {spark_submit.py:491} INFO - root
+[2025-11-02T11:30:04.255+0000] {spark_submit.py:491} INFO - |-- timestamp: string (nullable = true)
+[2025-11-02T11:30:04.255+0000] {spark_submit.py:491} INFO - |-- location: string (nullable = true)
+[2025-11-02T11:30:04.255+0000] {spark_submit.py:491} INFO - |-- latitude: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- longitude: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- temperature_celsius: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- temperature_fahrenheit: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- humidity_percent: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- pressure_hpa: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- wind_speed_kmh: double (nullable = true)
+[2025-11-02T11:30:04.256+0000] {spark_submit.py:491} INFO - |-- weather_condition: string (nullable = true)
+[2025-11-02T11:30:04.258+0000] {spark_submit.py:491} INFO - |-- visibility_km: double (nullable = true)
+[2025-11-02T11:30:04.258+0000] {spark_submit.py:491} INFO - |-- uv_index: double (nullable = true)
+[2025-11-02T11:30:04.259+0000] {spark_submit.py:491} INFO - |-- hour: integer (nullable = true)
+[2025-11-02T11:30:04.259+0000] {spark_submit.py:491} INFO - |-- day_of_week: integer (nullable = true)
+[2025-11-02T11:30:04.259+0000] {spark_submit.py:491} INFO - |-- is_weekend: boolean (nullable = true)
+[2025-11-02T11:30:04.259+0000] {spark_submit.py:491} INFO - 
+[2025-11-02T11:30:04.500+0000] {spark_submit.py:491} INFO - Processed weather data count: 24
+[2025-11-02T11:31:48.061+0000] {spark_submit.py:491} INFO - Successfully wrote weather data to Iceberg table
+[2025-11-02T11:31:49.431+0000] {spark_submit.py:491} INFO - +------------+------------------+-----------------+------------------+--------------------+
+[2025-11-02T11:31:49.432+0000] {spark_submit.py:491} INFO - |weather_date|        avg_temp_c|     avg_humidity|    avg_wind_speed|          conditions|
+[2025-11-02T11:31:49.432+0000] {spark_submit.py:491} INFO - +------------+------------------+-----------------+------------------+--------------------+
+[2025-11-02T11:31:49.433+0000] {spark_submit.py:491} INFO - |  2025-11-02|18.799999999999997|60.05344827586207|6.3327586206896544|[clear, snow, rai...|
+[2025-11-02T11:31:49.433+0000] {spark_submit.py:491} INFO - |  2025-11-01| 17.97409090909091|62.54272727272728|6.9790909090909095|[clear, snow, rai...|
+[2025-11-02T11:31:49.433+0000] {spark_submit.py:491} INFO - +------------+------------------+-----------------+------------------+--------------------+
+[2025-11-02T11:31:49.433+0000] {spark_submit.py:491} INFO - 
+[2025-11-02T11:31:49.433+0000] {spark_submit.py:491} INFO - Weather ETL job completed successfully!
+[2025-11-02T11:31:50.275+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=nyc_weather_etl, task_id=spark_process_weather_to_iceberg, execution_date=20251102T102954, start_date=20251102T112957, end_date=20251102T113150
+[2025-11-02T11:31:50.313+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-11-02T11:31:50.326+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

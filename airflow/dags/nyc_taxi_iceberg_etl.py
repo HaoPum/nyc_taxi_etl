@@ -12,6 +12,7 @@ try:
     from airflow.operators.python import PythonOperator
     from airflow.operators.bash import BashOperator
     from airflow.providers.postgres.hooks.postgres import PostgresHook
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 except ImportError:
     print("Airflow not available in this environment")
 
@@ -96,7 +97,8 @@ def download_nyc_taxi_data(**context):
     month = current_date.month
     
     # NYC Taxi data URL (Yellow taxi trips)
-    url = f"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{month:02d}.parquet"
+    # url = f"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{month:02d}.parquet"
+    url = f"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-{month}.parquet"
     
     # Create data directory if it doesn't exist
     data_dir = "/opt/airflow/data/raw"
@@ -124,51 +126,51 @@ def download_nyc_taxi_data(**context):
         create_sample_data(output_path, last_date)
         context['task_instance'].xcom_push(key='raw_data_path', value=output_path)
 
-def create_sample_data(output_path, last_date):
-    """Create sample NYC taxi data for demo purposes"""
-    import pandas as pd
-    import numpy as np
-    from datetime import datetime, timedelta
+# def create_sample_data(output_path, last_date):
+#     """Create sample NYC taxi data for demo purposes"""
+#     import pandas as pd
+#     import numpy as np
+#     from datetime import datetime, timedelta
     
-    # Generate sample data
-    n_records = 10000
-    start_date = last_date
-    end_date = datetime.now()
+#     # Generate sample data
+#     n_records = 10000
+#     start_date = last_date
+#     end_date = datetime.now()
     
-    data = {
-        'VendorID': np.random.choice([1, 2], n_records),
-        'tpep_pickup_datetime': pd.date_range(start_date, end_date, periods=n_records),
-        'tpep_dropoff_datetime': pd.date_range(start_date + timedelta(minutes=5), 
-                                             end_date + timedelta(minutes=30), periods=n_records),
-        'passenger_count': np.random.choice([1, 2, 3, 4, 5], n_records, p=[0.6, 0.2, 0.1, 0.07, 0.03]),
-        'trip_distance': np.random.exponential(2.0, n_records),
-        'RatecodeID': np.random.choice([1, 2, 3, 4, 5], n_records, p=[0.9, 0.03, 0.03, 0.02, 0.02]),
-        'store_and_fwd_flag': np.random.choice(['N', 'Y'], n_records, p=[0.95, 0.05]),
-        'PULocationID': np.random.randint(1, 266, n_records),
-        'DOLocationID': np.random.randint(1, 266, n_records),
-        'payment_type': np.random.choice([1, 2, 3, 4], n_records, p=[0.7, 0.25, 0.03, 0.02]),
-        'fare_amount': np.random.exponential(10.0, n_records),
-        'extra': np.random.choice([0, 0.5, 1.0], n_records, p=[0.7, 0.2, 0.1]),
-        'mta_tax': np.full(n_records, 0.5),
-        'tip_amount': np.random.exponential(2.0, n_records),
-        'tolls_amount': np.random.exponential(1.0, n_records) * np.random.choice([0, 1], n_records, p=[0.9, 0.1]),
-        'improvement_surcharge': np.full(n_records, 0.3),
-        'total_amount': None,
-        'congestion_surcharge': np.random.choice([0, 2.5], n_records, p=[0.5, 0.5]),
-        'airport_fee': np.random.choice([0, 1.25], n_records, p=[0.95, 0.05])
-    }
+#     data = {
+#         'VendorID': np.random.choice([1, 2], n_records),
+#         'tpep_pickup_datetime': pd.date_range(start_date, end_date, periods=n_records),
+#         'tpep_dropoff_datetime': pd.date_range(start_date + timedelta(minutes=5), 
+#                                              end_date + timedelta(minutes=30), periods=n_records),
+#         'passenger_count': np.random.choice([1, 2, 3, 4, 5], n_records, p=[0.6, 0.2, 0.1, 0.07, 0.03]),
+#         'trip_distance': np.random.exponential(2.0, n_records),
+#         'RatecodeID': np.random.choice([1, 2, 3, 4, 5], n_records, p=[0.9, 0.03, 0.03, 0.02, 0.02]),
+#         'store_and_fwd_flag': np.random.choice(['N', 'Y'], n_records, p=[0.95, 0.05]),
+#         'PULocationID': np.random.randint(1, 266, n_records),
+#         'DOLocationID': np.random.randint(1, 266, n_records),
+#         'payment_type': np.random.choice([1, 2, 3, 4], n_records, p=[0.7, 0.25, 0.03, 0.02]),
+#         'fare_amount': np.random.exponential(10.0, n_records),
+#         'extra': np.random.choice([0, 0.5, 1.0], n_records, p=[0.7, 0.2, 0.1]),
+#         'mta_tax': np.full(n_records, 0.5),
+#         'tip_amount': np.random.exponential(2.0, n_records),
+#         'tolls_amount': np.random.exponential(1.0, n_records) * np.random.choice([0, 1], n_records, p=[0.9, 0.1]),
+#         'improvement_surcharge': np.full(n_records, 0.3),
+#         'total_amount': None,
+#         'congestion_surcharge': np.random.choice([0, 2.5], n_records, p=[0.5, 0.5]),
+#         'airport_fee': np.random.choice([0, 1.25], n_records, p=[0.95, 0.05])
+#     }
     
-    df = pd.DataFrame(data)
+#     df = pd.DataFrame(data)
     
-    # Calculate total_amount
-    df['total_amount'] = (df['fare_amount'] + df['extra'] + df['mta_tax'] + 
-                         df['tip_amount'] + df['tolls_amount'] + 
-                         df['improvement_surcharge'] + df['congestion_surcharge'] + 
-                         df['airport_fee'])
+#     # Calculate total_amount
+#     df['total_amount'] = (df['fare_amount'] + df['extra'] + df['mta_tax'] + 
+#                          df['tip_amount'] + df['tolls_amount'] + 
+#                          df['improvement_surcharge'] + df['congestion_surcharge'] + 
+#                          df['airport_fee'])
     
-    # Save as parquet
-    df.to_parquet(output_path, index=False)
-    print(f"Created sample data at {output_path}")
+#     # Save as parquet
+#     df.to_parquet(output_path, index=False)
+#     print(f"Created sample data at {output_path}")
 
 def validate_data(**context):
     """Validate the downloaded data"""
@@ -224,27 +226,27 @@ validate_data_task = PythonOperator(
     dag=dag,
 )
 
-# Spark job for processing data to Iceberg
-spark_etl_task = BashOperator(
+spark_etl_task = SparkSubmitOperator(
     task_id='spark_process_to_iceberg',
-    bash_command='''
-    docker exec spark-master spark-submit \
-        --master spark://spark-master:7077 \
-        --deploy-mode client \
-        --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
-        --conf spark.sql.catalog.spark_catalog.type=hive \
-        --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog \
-        --conf spark.sql.catalog.iceberg.type=hadoop \
-        --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse \
-        --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
-        --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 \
-        --conf spark.hadoop.fs.s3a.access.key=admin \
-        --conf spark.hadoop.fs.s3a.secret.key=password \
-        --conf spark.hadoop.fs.s3a.path.style.access=true \
-        --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
-        --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar \
-        /opt/airflow/dags/spark_jobs/nyc_taxi_to_iceberg.py {{ task_instance.xcom_pull(task_ids='validate_data', key='validated_data_path') }}
-    ''',
+    application='/opt/airflow/dags/spark_jobs/nyc_taxi_to_iceberg.py',
+    application_args=["{{task_instance.xcom_pull(task_ids='validate_data', key='validated_data_path')}}"],
+    conn_id='spark_default',
+    spark_binary='/opt/bitnami/spark/bin/spark-submit',
+    conf={
+        'spark.master': 'spark://spark-master:7077',
+        'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
+        'spark.sql.catalog.spark_catalog.type': 'hive',
+        'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
+        'spark.sql.catalog.iceberg.type': 'hadoop',
+        'spark.sql.catalog.iceberg.warehouse': 's3a://lakehouse/warehouse',
+        'spark.sql.extensions': 'org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions',
+        'spark.hadoop.fs.s3a.endpoint': 'http://minio:9000',
+        'spark.hadoop.fs.s3a.access.key': 'admin',
+        'spark.hadoop.fs.s3a.secret.key': 'password',
+        'spark.hadoop.fs.s3a.path.style.access': 'true',
+        'spark.hadoop.fs.s3a.impl': 'org.apache.hadoop.fs.s3a.S3AFileSystem',
+    },
+    jars='/opt/airflow/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/airflow/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/airflow/jars/hadoop-aws-3.3.4.jar',
     dag=dag,
 )
 
