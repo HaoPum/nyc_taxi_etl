@@ -2,7 +2,19 @@
 .vscode/
 .DS_Store
 
-/data/weather/
+# 
+/data/locations/*
+!/data/locations/.gitkeep
+
+/data/processed/*
+!/data/processed/.gitkeep
+
+/data/raw/*
+!/data/raw/.gitkeep
+
+/data/weather/*
+!/data/weather/.gitkeep
 
 # Dependency Jars
-airflow/jars/
+/airflow/jars/*
+!/airflow/jars/.gitkeep
