@@ -8,6 +8,9 @@ import os
 
 # Handle Airflow imports gracefully for development
 try:
+    from airflow.models import DagRun
+    from airflow.utils.state import DagRunState
+    from airflow.utils.types import DagRunType
     from airflow import DAG
     from airflow.operators.python import PythonOperator
     from airflow.operators.bash import BashOperator
@@ -35,8 +38,19 @@ dag = DAG(
     schedule_interval=timedelta(hours=2),  # Run every 2 hours
     catchup=False,
     max_active_runs=1,
-    tags=['analytics', 'iceberg', 'spark', 'transformation'],
+    tags=['analytics', 'iceberg', 'spark', 'transformation']
+    # params={'processing_date': '{{ds}}'}
 )
+
+def get_lastest_successfull_run_execution_date(dag_id, **context):
+    dag_runs = DagRun.find(
+        dag_id=dag_id,
+        state=DagRunState.SUCCESS,
+        run_type=DagRunType.SCHEDULED
+    )
+    if dag_runs:
+        return dag_runs[0].execution_date
+    return None
 
 def check_data_availability(**context):
     """Check if all required data sources are available"""
@@ -59,6 +73,7 @@ wait_for_taxi_data = ExternalTaskSensor(
     timeout=300,
     allowed_states=['success'],
     failed_states=['failed', 'upstream_failed'],
+    execution_date_fn=lambda dt: get_lastest_successfull_run_execution_date('nyc_taxi_iceberg_etl'),
     dag=dag,
 )
 
@@ -70,6 +85,7 @@ wait_for_weather_data = ExternalTaskSensor(
     timeout=300,
     allowed_states=['success'],
     failed_states=['failed', 'upstream_failed'],
+    execution_date_fn=lambda dt: get_lastest_successfull_run_execution_date('nyc_weather_etl'),
     dag=dag,
 )
 
@@ -112,7 +128,7 @@ comprehensive_analytics_task = SparkSubmitOperator(
     application='/opt/airflow/dags/spark_jobs/comprehensive_analytics.py',
     conn_id='spark_default',
     conf={
-        'spark.master': 'spark://spark-master:7077',
+        # 'spark.master': 'spark://spark-master:7077',
         'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
         'spark.sql.catalog.spark_catalog.type': 'hive',
         'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
@@ -161,7 +177,7 @@ realtime_cdc_task = SparkSubmitOperator(
     application='/opt/airflow/dags/spark_jobs/realtime_cdc_processor.py',
     conn_id='spark_default',
     conf={
-        'spark.master': 'spark://spark-master:7077',
+        # 'spark.master': 'spark://spark-master:7077',
         'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
         'spark.sql.catalog.spark_catalog.type': 'hive',
         'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
@@ -174,7 +190,7 @@ realtime_cdc_task = SparkSubmitOperator(
         'spark.hadoop.fs.s3a.path.style.access': 'true',
         'spark.hadoop.fs.s3a.impl': 'org.apache.hadoop.fs.s3a.S3AFileSystem'
     },
-    jars='/opt/airflow/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/airflow/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/airflow/jars/hadoop-aws-3.3.4.jar',
+    jars='/opt/airflow/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/airflow/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/airflow/jars/hadoop-aws-3.3.4.jar,/opt/airflow/jars/spark-sql-kafka-0-10_2.12-3.5.1.jar,/opt/airflow/jars/kafka-clients-3.4.1.jar,/opt/airflow/jars/spark-token-provider-kafka-0-10_2.12-3.5.1.jar,/opt/airflow/jars/commons-pool2-2.11.1.jar',
     dag=dag
 )
 

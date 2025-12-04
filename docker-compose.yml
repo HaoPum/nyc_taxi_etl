@@ -209,6 +209,7 @@ services:
       - "5433:5432"
     volumes:
       - postgres_airflow_data:/var/lib/postgresql/data
+      - ./sql/init_hive_metastore.sql:/docker-entrypoint-initdb.d/init_hive_metastore.sql
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s

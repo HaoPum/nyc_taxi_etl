@@ -20,6 +20,7 @@ def create_spark_session():
     """Create Spark session with ML and Iceberg configuration"""
     return SparkSession.builder \
         .appName("ML Feature Engineering Pipeline") \
+        .master("local") \
         .config("spark.sql.catalog.spark_catalog", "org.apache.iceberg.spark.SparkSessionCatalog") \
         .config("spark.sql.catalog.spark_catalog.type", "hive") \
         .config("spark.sql.catalog.iceberg", "org.apache.iceberg.spark.SparkCatalog") \
@@ -166,7 +167,6 @@ def create_demand_prediction_features(spark):
             date_trunc('hour', pickup_datetime) as hour_timestamp,
             COUNT(*) as demand_count
         FROM iceberg.nyc_taxi.trips
-        WHERE pickup_datetime >= current_date() - interval 30 days
         GROUP BY pickup_location_id, date_trunc('hour', pickup_datetime)
     ),
     weather_hourly AS (
@@ -185,7 +185,6 @@ def create_demand_prediction_features(spark):
                 ELSE 0.0
             END as weather_condition_encoded
         FROM iceberg.weather.hourly_weather
-        WHERE timestamp >= current_date() - interval 30 days
     ),
     zone_info AS (
         SELECT 
@@ -235,10 +234,10 @@ def create_demand_prediction_features(spark):
             COALESCE(zp.popularity_decile, 5.0) as zone_popularity_score
             
         FROM hourly_demand hd
-        LEFT JOIN weather_hourly wh ON hd.hour_timestamp = wh.hour_timestamp
-        LEFT JOIN zone_info zi ON hd.location_id = zi.location_id
-        LEFT JOIN zone_popularity zp ON hd.location_id = zp.location_id
-        WHERE hd.hour_timestamp >= current_date() - interval 7 days
+            LEFT JOIN weather_hourly wh ON hd.hour_timestamp = wh.hour_timestamp
+            LEFT JOIN zone_info zi ON hd.location_id = zi.location_id
+            LEFT JOIN zone_popularity zp ON hd.location_id = zp.location_id
+        WHERE temperature_celsius IS NOT NULL
     ),
     features_with_lags AS (
         SELECT 
@@ -323,7 +322,7 @@ def create_demand_prediction_features(spark):
         current_timestamp() as created_at
         
     FROM features_with_lags
-    WHERE prediction_hour >= current_date() - interval 1 day
+    WHERE temperature_celsius IS NOT NULL
     """
     
     print("Creating demand prediction features...")
@@ -359,9 +358,6 @@ def create_fare_prediction_features(spark):
             CASE WHEN hour(pickup_datetime) BETWEEN 7 AND 9 OR hour(pickup_datetime) BETWEEN 17 AND 19 
                  THEN true ELSE false END as is_rush_hour
         FROM iceberg.nyc_taxi.trips
-        WHERE pickup_datetime >= current_date() - interval 7 days
-        AND fare_amount > 0 
-        AND trip_distance > 0
     ),
     zone_info AS (
         SELECT 
@@ -397,7 +393,6 @@ def create_fare_prediction_features(spark):
             END as weather_condition_encoded,
             CASE WHEN weather_condition IN ('rain', 'snow', 'fog') THEN true ELSE false END as is_bad_weather
         FROM iceberg.weather.hourly_weather
-        WHERE timestamp >= current_date() - interval 7 days
     ),
     route_history AS (
         SELECT 
@@ -406,7 +401,6 @@ def create_fare_prediction_features(spark):
             AVG(fare_amount) as avg_fare_same_route_7d,
             COUNT(*) as route_frequency
         FROM iceberg.nyc_taxi.trips
-        WHERE pickup_datetime >= current_date() - interval 7 days
         GROUP BY pickup_location_id, dropoff_location_id
     ),
     zone_hourly_stats AS (
@@ -421,7 +415,6 @@ def create_fare_prediction_features(spark):
                 ELSE 1.0
             END as surge_factor
         FROM iceberg.nyc_taxi.trips
-        WHERE pickup_datetime >= current_date() - interval 7 days
         GROUP BY pickup_location_id, date_trunc('hour', pickup_datetime)
     )
     SELECT 
@@ -480,7 +473,7 @@ def create_fare_prediction_features(spark):
     LEFT JOIN zone_hourly_stats zhs ON tb.pickup_location_id = zhs.pickup_location_id 
         AND date_trunc('hour', tb.pickup_datetime) = zhs.hour_timestamp
     WHERE pickup_zone.location_id IS NOT NULL 
-    AND dropoff_zone.location_id IS NOT NULL
+        AND dropoff_zone.location_id IS NOT NULL 
     """
     
     print("Creating fare prediction features...")
@@ -509,7 +502,7 @@ def generate_feature_statistics(spark):
             MIN(prediction_hour) as earliest_hour,
             MAX(prediction_hour) as latest_hour
         FROM iceberg.ml.demand_prediction_features
-        WHERE feature_date >= current_date() - interval 1 day
+        -- WHERE feature_date >= current_date() - interval 1 day
     """).show()
     
     print("\n=== FARE PREDICTION FEATURES STATISTICS ===")
@@ -523,7 +516,7 @@ def generate_feature_statistics(spark):
             COUNT(DISTINCT pickup_zone_id) as unique_pickup_zones,
             COUNT(DISTINCT dropoff_zone_id) as unique_dropoff_zones
         FROM iceberg.ml.fare_prediction_features
-        WHERE feature_date >= current_date() - interval 1 day
+        -- WHERE feature_date >= current_date() - interval 1 day
     """).show()
     
     print("\n=== FEATURE CORRELATION ANALYSIS ===")
@@ -533,8 +526,8 @@ def generate_feature_statistics(spark):
             CORR(target_demand, demand_24h_ago) as demand_seasonal_corr,
             CORR(target_demand, zone_popularity_score) as demand_popularity_corr
         FROM iceberg.ml.demand_prediction_features
-        WHERE feature_date >= current_date() - interval 1 day
-        AND demand_24h_ago IS NOT NULL
+        -- WHERE feature_date >= current_date() - interval 1 day
+        -- AND demand_24h_ago IS NOT NULL
     """).show()
 
 def main():

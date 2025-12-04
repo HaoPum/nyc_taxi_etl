@@ -18,6 +18,7 @@ def create_spark_session():
     """Create Spark session with Iceberg configuration"""
     return SparkSession.builder \
         .appName("Comprehensive Analytics Pipeline") \
+        .master("local") \
         .config("spark.sql.catalog.spark_catalog", "org.apache.iceberg.spark.SparkSessionCatalog") \
         .config("spark.sql.catalog.spark_catalog.type", "hive") \
         .config("spark.sql.catalog.iceberg", "org.apache.iceberg.spark.SparkCatalog") \

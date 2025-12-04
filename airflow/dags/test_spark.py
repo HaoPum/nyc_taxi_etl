@@ -23,14 +23,37 @@ dag = DAG(
     max_active_runs=1
 )
 
-run_spark = SparkSubmitOperator(
-    task_id='run_spark_job',
-    application='/opt/airflow/dags/spark_jobs/test_sparkjob.py',
+# run_spark = SparkSubmitOperator(
+#     task_id='run_spark_job',
+#     application='/opt/airflow/dags/spark_jobs/test_sparkjob.py',
+#     conn_id='spark_default',
+#     spark_binary='/opt/bitnami/spark/bin/spark-submit',
+#     conf={'spark.master': 'spark://spark-master:7077'},
+#     packages='org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0',
+#     dag=dag
+# )
+
+
+reference_taxi_zones = SparkSubmitOperator(
+    task_id='realtime_cdc_processing',
+    application='/opt/airflow/dags/spark_jobs/test.py',
     conn_id='spark_default',
-    spark_binary='/opt/bitnami/spark/bin/spark-submit',
-    conf={'spark.master': 'spark://spark-master:7077'},
-    packages='org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0',
+    conf={
+        # 'spark.master': 'spark://spark-master:7077',
+        'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
+        'spark.sql.catalog.spark_catalog.type': 'hive',
+        'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
+        'spark.sql.catalog.iceberg.type': 'hadoop',
+        'spark.sql.catalog.iceberg.warehouse': 's3a://lakehouse/warehouse',
+        'spark.sql.extensions': 'org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions',
+        'spark.hadoop.fs.s3a.endpoint': 'http://minio:9000',
+        'spark.hadoop.fs.s3a.access.key': 'admin',
+        'spark.hadoop.fs.s3a.secret.key': 'password',
+        'spark.hadoop.fs.s3a.path.style.access': 'true',
+        'spark.hadoop.fs.s3a.impl': 'org.apache.hadoop.fs.s3a.S3AFileSystem'
+    },
+    jars='/opt/airflow/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/airflow/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/airflow/jars/hadoop-aws-3.3.4.jar,/opt/airflow/jars/spark-sql-kafka-0-10_2.12-3.5.1.jar,/opt/airflow/jars/kafka-clients-3.4.1.jar,/opt/airflow/jars/spark-token-provider-kafka-0-10_2.12-3.5.1.jar,/opt/airflow/jars/commons-pool2-2.11.1.jar',
     dag=dag
 )
 
-run_spark
+reference_taxi_zones

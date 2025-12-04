@@ -17,6 +17,7 @@ def create_spark_session():
     """Create Spark session with streaming and Iceberg configuration"""
     return SparkSession.builder \
         .appName("Real-time CDC Processor") \
+        .master("local") \
         .config("spark.sql.catalog.spark_catalog", "org.apache.iceberg.spark.SparkSessionCatalog") \
         .config("spark.sql.catalog.spark_catalog.type", "hive") \
         .config("spark.sql.catalog.iceberg", "org.apache.iceberg.spark.SparkCatalog") \
@@ -28,7 +29,6 @@ def create_spark_session():
         .config("spark.hadoop.fs.s3a.secret.key", "password") \
         .config("spark.hadoop.fs.s3a.path.style.access", "true") \
         .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem") \
-        .config("spark.sql.streaming.checkpointLocation", "s3a://lakehouse/checkpoints/cdc") \
         .getOrCreate()
 
 def create_realtime_tables(spark):
@@ -93,14 +93,15 @@ def process_trip_cdc_stream(spark):
         .format("kafka") \
         .option("kafka.bootstrap.servers", "broker:29092") \
         .option("subscribe", "lakehouse.trips") \
-        .option("startingOffsets", "latest") \
+        .option("startingOffsets", "earliest") \
         .option("failOnDataLoss", "false") \
         .load()
     
+
     # Parse CDC JSON data
     cdc_parsed = cdc_stream.select(
         col("timestamp").alias("kafka_timestamp"),
-        from_json(col("value").cast("string"), 
+        from_json(col("value").cast("string"),
                  StructType([
                      StructField("op", StringType(), True),
                      StructField("ts_ms", LongType(), True),
@@ -136,10 +137,12 @@ def process_trip_cdc_stream(spark):
                  StructType([
                      StructField("id", IntegerType(), True),
                      StructField("vendor_id", IntegerType(), True),
-                     StructField("pickup_datetime", StringType(), True),
-                     StructField("dropoff_datetime", StringType(), True),
-                     StructField("pickup_location_id", IntegerType(), True),
-                     StructField("dropoff_location_id", IntegerType(), True),
+                     StructField("pickup_datetime", LongType(), True),
+                     StructField("dropoff_datetime", LongType(), True),
+                     StructField("pickup_longitude", DoubleType(), True),
+                     StructField("pickup_latitude", DoubleType(), True),
+                     StructField("dropoff_longitude", DoubleType(), True),
+                     StructField("dropoff_latitude", DoubleType(), True),
                      StructField("trip_distance", DoubleType(), True),
                      StructField("fare_amount", DoubleType(), True),
                      StructField("total_amount", DoubleType(), True)
@@ -149,48 +152,80 @@ def process_trip_cdc_stream(spark):
         col("operation"),
         col("source_ts_ms"),
         col("trip.*")
-    ).filter(
-        col("pickup_location_id").isNotNull() &
-        col("fare_amount").isNotNull() &
-        col("fare_amount") > 0
-    )
-    
-    # Create windowed aggregations (5-minute windows)
-    windowed_aggs = trip_details \
-        .withWatermark("kafka_timestamp", "10 minutes") \
-        .groupBy(
-            window(col("kafka_timestamp"), "5 minutes"),
-            col("pickup_location_id")
-        ) \
-        .agg(
-            count("*").alias("total_trips"),
-            sum("total_amount").alias("total_revenue"),
-            avg("trip_distance").alias("avg_trip_distance"),
-            avg("fare_amount").alias("avg_fare_amount"),
-            countDistinct("vendor_id").alias("unique_vendors")
-        ) \
-        .select(
-            col("window.start").alias("window_start"),
-            col("window.end").alias("window_end"),
-            col("pickup_location_id").alias("pickup_zone_id"),
-            col("total_trips"),
-            col("total_revenue"),
-            col("avg_trip_distance"),
-            col("avg_fare_amount"),
-            col("unique_vendors"),
-            current_timestamp().alias("processed_at")
-        )
+    ) \
+    .withColumn("pickup_datetime", (col("pickup_datetime") / 1000000).cast("timestamp")) \
+    .withColumn("dropoff_datetime", (col("dropoff_datetime") / 1000000).cast("timestamp")) \
+    .withColumn("kafka_timestamp", (col("source_ts_ms") / 1000).cast("timestamp"))
+
+    def process_batch(batch_df, batch_id):
+        print(f"--- Processing micro-batch {batch_id} ---")
+        if batch_df.isEmpty():
+            print("Micro-batch is empty.")
+            return
+
+        # Load taxi zones reference data as a static DataFrame
+        taxi_zones_df = spark.table("iceberg.reference.taxi_zones").select("location_id", "zone", "latitude", "longitude")
+
+        # --- Logic to find the nearest pickup zone for the current micro-batch ---
+        trip_with_pickup_zone = batch_df.crossJoin(broadcast(taxi_zones_df.withColumnRenamed("location_id", "pickup_zone_id") \
+                                                                        .withColumnRenamed("latitude", "zone_lat") \
+                                                                        .withColumnRenamed("longitude", "zone_lon"))) \
+            .withColumn("distance_to_pickup_zone", 
+                sqrt(pow(col("pickup_latitude") - col("zone_lat"), 2) + pow(col("pickup_longitude") - col("zone_lon"), 2))
+            ) \
+            .groupBy("id") \
+            .agg(min(struct("distance_to_pickup_zone", "pickup_zone_id")).alias("closest_pickup")) \
+            .select("id", col("closest_pickup.pickup_zone_id").alias("pickup_location_id"))
+
+        # Join the determined location_id back to the micro-batch
+        trip_details_with_locations = batch_df.join(trip_with_pickup_zone, "id", "left") \
+            .filter("pickup_location_id IS NOT NULL AND fare_amount IS NOT NULL AND fare_amount > 0")
+
+        # Create windowed aggregations for this micro-batch
+        windowed_aggs = trip_details_with_locations \
+            .withWatermark("kafka_timestamp", "10 minutes") \
+            .groupBy(
+                window(col("kafka_timestamp"), "5 minutes"),
+                col("pickup_location_id")
+            ) \
+            .agg(
+                count("*").alias("total_trips"),
+                sum("total_amount").alias("total_revenue"),
+                avg("trip_distance").alias("avg_trip_distance"),
+                avg("fare_amount").alias("avg_fare_amount"),
+                approx_count_distinct("vendor_id").alias("unique_vendors")
+            ) \
+            .select(
+                col("window.start").alias("window_start"),
+                col("window.end").alias("window_end"),
+                col("pickup_location_id").alias("pickup_zone_id"),
+                col("total_trips"),
+                col("total_revenue"),
+                col("avg_trip_distance"),
+                col("avg_fare_amount"),
+                col("unique_vendors"),
+                current_timestamp().alias("processed_at")
+            )
+        
+        # Write the aggregated data for this batch to console/Iceberg
+        windowed_aggs.writeTo("iceberg.realtime.trip_aggregations").append()
+        print(f"Successfully wrote {windowed_aggs.count()} rows to trip_aggregations for batch {batch_id}.")    
     
     # Write to Iceberg table
-    query = windowed_aggs.writeStream \
-        .format("iceberg") \
-        .outputMode("append") \
-        .option("table", "iceberg.realtime.trip_aggregations") \
+    query = trip_details.writeStream \
         .option("checkpointLocation", "s3a://lakehouse/checkpoints/cdc/trip_aggs") \
-        .option("fanout-enabled", "true") \
+        .outputMode("append") \
+        .foreachBatch(process_batch) \
         .trigger(processingTime="30 seconds") \
         .start()
-    
+
+    # query = trip_details.writeStream \
+    #     .outputMode("append") \
+    #     .foreachBatch(process_batch) \
+    #     .trigger(processingTime="30 seconds") \
+    #     .start()
+        
+
     return query
 
 def process_zone_activity_stream(spark):
@@ -208,8 +243,8 @@ def process_zone_activity_stream(spark):
         .withColumn("revenue_last_hour", col("total_revenue")) \
         .withColumn("avg_fare_last_hour", col("avg_fare_amount")) \
         .withColumn("pickup_count", col("total_trips")) \
-        .withColumn("dropoff_count", lit(0))  # Would need separate CDC processing for dropoffs
-        .withColumn("top_destination_zone", lit(null).cast("int"))  # Would need more complex logic
+        .withColumn("dropoff_count", lit(0)) \
+        .withColumn("top_destination_zone", lit(None).cast("int")) \
         .withColumn("activity_score", 
                    col("total_trips") * 0.4 + 
                    (col("total_revenue") / 100) * 0.4 + 
@@ -226,15 +261,20 @@ def process_zone_activity_stream(spark):
             current_timestamp().alias("processed_at")
         )
     
-    # Write to zone activity table
+    # Write to zone activity table    
     query = zone_activity.writeStream \
-        .format("iceberg") \
-        .outputMode("append") \
-        .option("table", "iceberg.realtime.zone_activity") \
         .option("checkpointLocation", "s3a://lakehouse/checkpoints/cdc/zone_activity") \
+        .outputMode("append") \
         .trigger(processingTime="60 seconds") \
-        .start()
-    
+        .toTable("iceberg.realtime.zone_activity")
+
+    # query = zone_activity.writeStream \
+    #     .outputMode("append") \
+    #     .format("console") \
+    #     .option("truncate", "false") \
+    #     .trigger(processingTime="30 seconds") \
+    #     .start()
+
     return query
 
 def monitor_streaming_queries(queries):
@@ -242,7 +282,7 @@ def monitor_streaming_queries(queries):
     try:
         # Wait for queries to finish (they run indefinitely)
         for query in queries:
-            query.awaitTermination(timeout=300)  # 5 minutes timeout for demo
+            query.awaitTermination(timeout=60)  # 5 minutes timeout for demo
             
     except Exception as e:
         print(f"Streaming query error: {e}")
@@ -285,3 +325,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+

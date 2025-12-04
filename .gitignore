@@ -1,6 +1,11 @@
-.idea/
+idea/
 .vscode/
 .DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
 # 
 /data/locations/*
@@ -21,3 +26,6 @@
 
 /airflow/logs/*
 !/airflow/logs/.gitkeep
+
+# Docker
+metastore_db/

@@ -42,7 +42,7 @@ dag = DAG(
     schedule_interval=timedelta(hours=1),  # Run every hour
     catchup=False,
     max_active_runs=1,
-    tags=['weather', 'iceberg', 'spark', 'etl'],
+    tags=['weather', 'iceberg', 'spark', 'etl']
 )
 
 def fetch_weather_data(**context):

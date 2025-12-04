@@ -41,7 +41,7 @@ dag = DAG(
     schedule_interval=timedelta(hours=6),  # Run every 6 hours
     catchup=False,
     max_active_runs=1,
-    tags=['nyc-taxi', 'iceberg', 'spark', 'etl'],
+    tags=['nyc-taxi', 'iceberg', 'spark', 'etl']
 )
 
 def get_latest_processed_date(**context):
