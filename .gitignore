@@ -4,44 +4,37 @@ test_data.py
 test.py
 test_sparkjob.py
 
+idea/
+.vscode/
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+# 
+/data/locations/*
+!/data/locations/.gitkeep
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+/data/processed/*
+!/data/processed/.gitkeep
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+/data/raw/*
+!/data/raw/.gitkeep
 
-# IDE / Editor specific
-.idea/
-.vscode/
+/data/weather/*
+!/data/weather/.gitkeep
+
+/airflow/dags/__pycache__/*
+!/airflow/dags/__pycache__/.gitkeep
+
+# Dependency Jars
+/airflow/jars/*
+!/airflow/jars/.gitkeep
+
+/airflow/logs/*
+!/airflow/logs/.gitkeep
+
+# Docker
+metastore_db/

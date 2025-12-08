@@ -282,7 +282,7 @@ def monitor_streaming_queries(queries):
     try:
         # Wait for queries to finish (they run indefinitely)
         for query in queries:
-            query.awaitTermination(timeout=60)  # 5 minutes timeout for demo
+            query.awaitTermination(timeout=80)  # timeout for demo
             
     except Exception as e:
         print(f"Streaming query error: {e}")
