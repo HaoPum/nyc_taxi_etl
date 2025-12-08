@@ -1,31 +1,47 @@
-idea/
-.vscode/
-.DS_Store
+# Files requested to be ignored
+test_spark.py
+test_data.py
+test.py
+test_sparkjob.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# 
-/data/locations/*
-!/data/locations/.gitkeep
+# C extensions
+*.so
 
-/data/processed/*
-!/data/processed/.gitkeep
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-/data/raw/*
-!/data/raw/.gitkeep
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-/data/weather/*
-!/data/weather/.gitkeep
-
-# Dependency Jars
-/airflow/jars/*
-!/airflow/jars/.gitkeep
-
-/airflow/logs/*
-!/airflow/logs/.gitkeep
-
-# Docker
-metastore_db/
+# IDE / Editor specific
+.idea/
+.vscode/
