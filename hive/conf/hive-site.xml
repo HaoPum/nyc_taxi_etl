@@ -1,0 +1,70 @@
+<configuration>
+  <!-- Cấu hình kết nối đến PostgreSQL -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:postgresql://postgres-airflow:5432/hive_metastore</value>
+    <description>JDBC connect string for a JDBC metastore</description>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>org.postgresql.Driver</value>
+    <description>Driver class name for a JDBC metastore</description>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>airflow</value>
+    <description>Username to use against metastore database</description>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>airflow</value>
+    <description>Password to use against metastore database</description>
+  </property>
+
+  <!--
+    Các thuộc tính quan trọng để kiểm soát việc tạo và xác minh schema.
+    Đây là chìa khóa để giải quyết vấn đề.
+  -->
+  <property>
+    <name>datanucleus.autoCreateSchema</name>
+    <value>true</value>
+    <description>Bắt buộc phải là 'true' để công cụ schematool có thể khởi tạo các bảng. Nếu không, nó có thể hoạt động sai hoặc dùng cấu hình mặc định (Derby).</description>
+  </property>
+  <property>
+    <name>datanucleus.fixedDatastore</name>
+    <value>true</value>
+    <description>Ngăn Hive Metastore tự động thay đổi schema sau khi đã được khởi tạo. Đây là một thiết lập an toàn.</description>
+  </property>
+  <property>
+    <name>datanucleus.autoCreateTables</name>
+    <value>true</value>
+    <description>Creates tables automatically if they don't exist.</description>
+  </property>
+  <property>
+    <name>hive.metastore.schema.verification</name>
+    <value>false</value>
+    <description>Tạm thời tắt kiểm tra phiên bản schema trong quá trình khởi tạo để tránh lỗi. Bạn nên đặt lại thành 'true' khi hệ thống đã ổn định.</description>
+  </property>
+
+  <!-- Cấu hình để Hive Metastore truy cập MinIO/S3 -->
+  <property>
+    <name>fs.s3a.endpoint</name>
+    <value>http://minio:9000</value>
+  </property>
+  <property>
+    <name>fs.s3a.access.key</name>
+    <value>admin</value>
+  </property>
+  <property>
+    <name>fs.s3a.secret.key</name>
+    <value>password</value>
+  </property>
+  <property>
+    <name>fs.s3a.path.style.access</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>fs.s3a.impl</name>
+    <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+  </property>
+</configuration>

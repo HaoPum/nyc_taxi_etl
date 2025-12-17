@@ -209,7 +209,8 @@ services:
       - "5433:5432"
     volumes:
       - postgres_airflow_data:/var/lib/postgresql/data
-      - ./sql/init_hive_metastore.sql:/docker-entrypoint-initdb.d/init_hive_metastore.sql
+      - ./hive/01-create-hive-db.sh:/docker-entrypoint-initdb.d/01-create-hive-db.sh
+      - ./superset/init-db.sh:/docker-entrypoint-initdb.d/02-create-superset-db.sh
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
@@ -285,8 +286,10 @@ services:
       - |
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
-        exec /entrypoint airflow version
-        airflow db init
+        # exec /entrypoint airflow version # This just prints the version
+        # airflow db upgrade # This initializes or upgrades the database
+        /entrypoint airflow version
+        airflow db upgrade
         airflow users create \
           --username airflow \
           --firstname Airflow \
@@ -357,6 +360,92 @@ services:
     command: server /data --console-address ":9001"
     volumes:
       - minio_data:/data
+
+  trino:
+    image: trinodb/trino:448
+    container_name: trino
+    ports:
+      - "8084:8080"
+    user: root
+    volumes:
+      - ./trino/etc:/etc/trino
+
+  hive-metastore:
+    image: apache/hive:3.1.3
+    container_name: hive-metastore
+    platform: linux/amd64
+    ports:
+      - "9083:9083"
+    environment:
+      SERVICE_NAME: metastore
+      DB_TYPE: postgres
+    volumes:
+      # Mount the configuration file
+      - ./hive/conf/hive-site.xml:/opt/hive/conf/hive-site.xml
+      # Mount the necessary JARs
+      - ./airflow/jars/postgresql-42.6.0.jar:/opt/hive/lib/postgresql-42.6.0.jar
+      - ./airflow/jars/hadoop-aws-3.3.4.jar:/opt/hive/lib/hadoop-aws-3.3.4.jar
+      - ./airflow/jars/aws-java-sdk-bundle-1.12.367.jar:/opt/hive/lib/aws-java-sdk-bundle-1.12.367.jar
+    entrypoint: /bin/bash
+    command: >
+      -c "
+        echo 'PostgreSQL is healthy. Checking/Initializing Hive Metastore schema...';
+        
+        # Tự động kiểm tra và khởi tạo schema nếu chưa có
+        /opt/hive/bin/schematool -dbType postgres -info
+        if [ $? -ne 0 ]; then
+          echo 'Metastore schema not found. Initializing...';
+          /opt/hive/bin/schematool -dbType postgres -initSchema
+        fi
+
+        echo 'Starting Hive Metastore service...';
+        /opt/hive/bin/hive --service metastore
+      "
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+
+  superset: 
+    build:
+      context: ./superset
+      dockerfile: dockerfile
+    container_name: superset
+    ports:
+      - "8089:8088"
+    environment:
+      - SUPERSET_CONFIG_PATH=/app/superset_config.py
+    depends_on:
+      superset-init:
+        condition: service_completed_successfully
+    volumes:
+      - ./superset/superset_config.py:/app/superset_config.py
+    command: >
+      /app/docker/docker-bootstrap.sh app-gunicorn
+
+  superset-init: 
+    build:
+      context: ./superset
+      dockerfile: dockerfile
+    container_name: superset-init
+    command: >
+      bash -c "
+        echo 'Waiting for DB to be created by postgres container...' &&
+        sleep 15 &&
+        echo 'Upgrading DB...' &&
+        superset db upgrade &&
+        echo 'Creating admin user...' &&
+        (superset fab create-admin --username admin --firstname Admin --lastname User --email admin@superset.com --password admin || true) &&
+        echo 'Initializing...' &&
+        superset init
+      "
+    environment:
+      - SUPERSET_CONFIG_PATH=/app/superset_config.py
+    volumes:
+      - ./superset/superset_config.py:/app/superset_config.py
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+
   
 
 volumes:

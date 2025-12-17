@@ -33,5 +33,10 @@ curl -L -o ./airflow/jars/spark-token-provider-kafka-0-10_2.12-3.5.1.jar \
 curl -L -o ./airflow/jars/commons-pool2-2.11.1.jar \
     https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar
 
+# Download PostgreSQL JDBC Driver
+curl -L -o ./airflow/jars/postgresql-42.6.0.jar \
+    https://repo1.maven.org/maven2/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar
+
+
 
 echo "JAR files downloaded successfully!"

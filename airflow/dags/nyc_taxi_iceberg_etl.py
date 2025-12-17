@@ -236,9 +236,8 @@ spark_etl_task = SparkSubmitOperator(
         'spark.master': 'spark://spark-master:7077',
         'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
         'spark.sql.catalog.spark_catalog.type': 'hive',
-        'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
-        'spark.sql.catalog.iceberg.type': 'hadoop',
-        'spark.sql.catalog.iceberg.warehouse': 's3a://lakehouse/warehouse',
+        'spark.sql.catalog.spark_catalog.uri': 'thrift://postgres-airflow:9083', # Kết nối đến Hive Metastore
+        'spark.sql.catalog.spark_catalog.warehouse': 's3a://lakehouse/warehouse',
         'spark.sql.extensions': 'org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions',
         'spark.hadoop.fs.s3a.endpoint': 'http://minio:9000',
         'spark.hadoop.fs.s3a.access.key': 'admin',
@@ -246,7 +245,7 @@ spark_etl_task = SparkSubmitOperator(
         'spark.hadoop.fs.s3a.path.style.access': 'true',
         'spark.hadoop.fs.s3a.impl': 'org.apache.hadoop.fs.s3a.S3AFileSystem',
     },
-    jars='/opt/airflow/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/airflow/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/airflow/jars/hadoop-aws-3.3.4.jar',
+    jars='/opt/airflow/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/airflow/jars/aws-java-sdk-bundle-1.12.367.jar,/opt/airflow/jars/hadoop-aws-3.3.4.jar,/opt/airflow/jars/postgresql-42.6.0.jar',
     dag=dag,
 )
 

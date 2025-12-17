@@ -1,298 +1,135 @@
-# Session 1: Data Ingestion Setup Guide
+# 🚖 End-to-End Data Lakehouse: NYC Taxi Analytics Platform
 
-## Prerequisites
+!Architecture Diagram
+!Status
+!Docker
 
-- Docker and Docker Compose installed
-- At least 8GB RAM available
-- jq installed (for JSON formatting)
-- curl installed
+## 📖 Tổng quan (Overview)
 
-## Project Structure
+Dự án này là một hệ thống **Data Lakehouse** hoàn chỉnh, được xây dựng để xử lý, lưu trữ và phân tích dữ liệu chuyến đi Taxi tại New York (NYC Taxi Dataset) kết hợp với dữ liệu thời tiết.
 
-Create the following directory structure:
+Mục tiêu chính của dự án là xây dựng một pipeline dữ liệu hiện đại (**Modern Data Stack**), giải quyết các bài toán thực tế trong Data Engineering:
+1.  **Xử lý dữ liệu lớn (Big Data Processing):** Sử dụng Apache Spark.
+2.  **Lưu trữ tin cậy (Reliable Storage):** Sử dụng Apache Iceberg để đảm bảo tính ACID cho Data Lake.
+3.  **Điều phối luồng công việc (Orchestration):** Quản lý các dependency phức tạp bằng Apache Airflow.
+4.  **Streaming & CDC:** Tích hợp dữ liệu thời gian thực từ Database transactional thông qua Kafka và Debezium.
+5.  **Phân tích & Trực quan hóa:** Sử dụng Trino để truy vấn và Superset để làm Dashboard.
 
-```
-D28 - FINAL PROJECT/
-├── docker-compose.yml
-├── sql/
-│   └── init.sql
-├── data-generator/
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── data_generator.py
-├── debezium-config.json
-├── kafka-scripts.sh
-└── README.md
-```
+---
 
-## Setup Instructions
+## 🏗 Kiến trúc hệ thống (Architecture)
 
-### 1. Create Project Directory
+Hệ thống được triển khai hoàn toàn trên Docker Containers, mô phỏng một môi trường Production thu nhỏ:
 
+| Thành phần | Công nghệ sử dụng | Vai trò |
+| :--- | :--- | :--- |
+| **Ingestion** | Python, Kafka, Debezium | Thu thập dữ liệu từ API và Transactional DB (Postgres). |
+| **Processing** | **Apache Spark** (PySpark) | Xử lý dữ liệu phân tán, transform và load vào Lakehouse. |
+| **Orchestration** | **Apache Airflow** | Lên lịch, quản lý dependency giữa các pipelines (Sensors). |
+| **Storage Format** | **Apache Iceberg** | Định dạng bảng mở, hỗ trợ Time Travel, Schema Evolution. |
+| **Object Storage** | **MinIO** (S3 Compatible) | Lưu trữ vật lý các file data (Parquet/Iceberg). |
+| **Catalog** | Hive Metastore | Quản lý metadata cho các bảng Iceberg. |
+| **Query Engine** | **Trino** | Truy vấn SQL tốc độ cao trực tiếp trên Data Lake. |
+| **Visualization** | **Apache Superset** | BI Dashboard kết nối với Trino. |
+
+---
+
+## 🔄 Các luồng dữ liệu (Data Pipelines)
+
+Dự án bao gồm 3 pipeline chính được điều phối bởi Airflow:
+
+### 1. Batch Pipeline: NYC Taxi Data (`nyc_taxi_iceberg_etl`)
+*   **Nguồn:** Dữ liệu NYC Taxi (Parquet) từ internet.
+*   **Logic:**
+    *   Tải dữ liệu Incremental theo tháng.
+    *   Kiểm tra chất lượng dữ liệu (Data Quality Check) trước khi xử lý.
+    *   Sử dụng Spark để ghi dữ liệu vào bảng Iceberg (`nyc_taxi_trips`) trên MinIO.
+    *   Cập nhật bảng Control để quản lý trạng thái tải (Watermark).
+
+### 2. Complementary Pipeline: Weather Data (`nyc_weather_etl`)
+*   **Nguồn:** OpenWeatherMap API (hoặc Mock data).
+*   **Logic:**
+    *   Thu thập dữ liệu thời tiết hàng giờ.
+    *   Tạo dữ liệu tham chiếu (Reference Data) cho các Zone của Taxi.
+    *   Lưu trữ vào Iceberg để phục vụ việc phân tích tương quan (Ví dụ: Trời mưa thì lượng taxi thay đổi thế nào?).
+
+### 3. Comprehensive Analytics (`comprehensive_analytics_pipeline`)
+*   **Logic:** Đây là DAG tổng hợp.
+    *   Sử dụng **Airflow Sensors** (`ExternalTaskSensor`) để đợi dữ liệu Taxi và Weather hoàn tất.
+    *   Chạy Spark Job để join các bảng, tính toán các chỉ số kinh doanh (Business Metrics).
+    *   Chuẩn bị Feature Store cho Machine Learning.
+
+---
+
+## 🛠 Cài đặt & Chạy dự án (Installation)
+
+Dự án yêu cầu Docker và Docker Compose.
+
+### 1. Clone Repository
 ```bash
-mkdir -p D28 - FINAL PROJECT/sql D28 - FINAL PROJECT/data-generator
-cd D28 - FINAL PROJECT
+git clone https://github.com/your-username/nyc-taxi-lakehouse.git
+cd nyc-taxi-lakehouse
 ```
 
-### 2. Copy Configuration Files
-
-Copy all the provided files to their respective locations:
-
-- `docker-compose.yml` → project root
-- `init.sql` → `sql/init.sql`
-- `debezium-config.json` → project root
-- `data_generator.py` → `data-generator/data_generator.py`
-- `Dockerfile` → `data-generator/Dockerfile`
-- `requirements.txt` → `data-generator/requirements.txt`
-- `kafka-scripts.sh` → project root
-
-### 3. Make Scripts Executable
-
+### 2. Khởi chạy hạ tầng
 ```bash
-chmod +x kafka-scripts.sh
+docker-compose up -d --build
 ```
+*Lưu ý: Quá trình này có thể mất vài phút để tải images và khởi tạo các services (Spark, Kafka, Airflow, Trino, v.v.).*
 
-### 4. Start the Infrastructure
-
+### 3. Thiết lập kết nối (Connections)
+Chạy script để tự động tạo các kết nối trong Airflow:
 ```bash
-# Start all services
-docker-compose up -d
-
-# Check service status
-docker-compose ps
+docker-compose exec airflow-webserver python /opt/airflow/dags/Create_connections.py
 ```
 
-### 5. Wait for Services and Setup
+### 4. Truy cập giao diện
+*   **Airflow UI:** `http://localhost:8080` (User/Pass: `airflow`/`airflow`)
+*   **MinIO Console:** `http://localhost:9001` (User/Pass: `admin`/`password`)
+*   **Spark Master:** `http://localhost:8080` (Port container map ra ngoài có thể khác, check docker-compose)
+*   **Superset:** `http://localhost:8089`
+*   **Trino:** `http://localhost:8084`
 
-```bash
-# Complete setup (wait for services + create topics + deploy connector)
-./kafka-scripts.sh setup-all
-```
+---
 
-## Verification Steps
+## 💡 Điểm nổi bật về kỹ thuật (Technical Highlights)
 
-### 1. Check Service Health
+### Tại sao lại là Apache Iceberg?
+Trong dự án này, tôi chọn Iceberg thay vì lưu file Parquet truyền thống vì:
+*   **Schema Evolution:** Dữ liệu Taxi thay đổi cấu trúc theo thời gian, Iceberg xử lý việc này mà không cần viết lại toàn bộ dữ liệu.
+*   **ACID Transactions:** Đảm bảo dữ liệu không bị lỗi khi nhiều pipeline cùng ghi/đọc.
+*   **Partitioning ẩn:** Tối ưu hóa truy vấn mà người dùng không cần biết cấu trúc thư mục vật lý.
 
-```bash
-# Check all services are running
-docker-compose ps
+### Xử lý Dependency trong Airflow
+Thay vì lập lịch cố định dễ gây lỗi, tôi sử dụng `ExternalTaskSensor` trong DAG `comprehensive_analytics_pipeline`. Pipeline phân tích sẽ **chỉ chạy** khi và chỉ khi pipeline ETL dữ liệu gốc đã thành công, đảm bảo tính toàn vẹn dữ liệu.
 
-# Check individual service logs
-docker-compose logs postgres
-docker-compose logs kafka
-docker-compose logs kafka-connect
-```
+### Infrastructure as Code
+Toàn bộ môi trường từ Database, Message Queue (Kafka), Compute Engine (Spark) đến BI tool đều được định nghĩa trong `docker-compose.yml`, giúp việc triển khai nhất quán trên mọi môi trường.
 
-### 2. Verify Database Connection
+---
 
-```bash
-# Connect to PostgreSQL
-docker exec -it postgres psql -U postgres -d taxi_db
+## 📊 Kết quả phân tích (Analytics Preview)
 
-# Check tables
-\dt taxi.*
+Dữ liệu sau khi xử lý cho phép trả lời các câu hỏi:
+*   Khu vực nào có nhu cầu taxi cao nhất vào giờ cao điểm?
+*   Thời tiết (Mưa/Tuyết) ảnh hưởng thế nào đến giá cước và tiền Tip?
+*   Xu hướng di chuyển thay đổi thế nào theo mùa?
 
-# Check sample data
-SELECT COUNT(*) FROM taxi.trips;
-```
+---
 
-### 3. Verify Kafka Topics
+## 🚀 Hướng phát triển (Future Improvements)
+*   Tích hợp **dbt (data build tool)** để quản lý các transformation SQL trong Trino/Spark tốt hơn.
+*   Triển khai **Great Expectations** để kiểm soát chất lượng dữ liệu chặt chẽ hơn.
+*   Xây dựng model Machine Learning dự đoán nhu cầu xe (Demand Forecasting).
 
-```bash
-# List topics
-./kafka-scripts.sh list-topics
+---
 
-# Check topic details
-./kafka-scripts.sh describe-topic lakehouse.trips
-```
+## 👤 Tác giả
 
-### 4. Verify Debezium Connector
+**[Tên của bạn]**
+*   Data Engineer
+*   Email: [Email của bạn]
+*   LinkedIn: [Link Profile của bạn]
 
-```bash
-# Check connector status
-./kafka-scripts.sh check-connector
-
-# List all connectors
-./kafka-scripts.sh list-connectors
-```
-
-### 5. Test Data Flow
-
-```bash
-# Insert test data
-./kafka-scripts.sh db-insert-test
-
-# Consume messages from Kafka (in separate terminal)
-./kafka-scripts.sh consume-trips
-```
-
-## Running the Demo
-
-### 1. Start Data Generator
-
-The data generator should already be running via Docker Compose. Check logs:
-
-```bash
-docker-compose logs data-generator
-```
-
-### 2. Monitor Data Flow
-
-In separate terminal windows:
-
-**Terminal 1 - Monitor Kafka Messages:**
-```bash
-./kafka-scripts.sh consume-formatted
-```
-
-**Terminal 2 - Monitor Database:**
-```bash
-# Query recent trips every 10 seconds
-watch -n 10 './kafka-scripts.sh db-query-recent'
-```
-
-**Terminal 3 - Monitor Connector:**
-```bash
-# Check connector status
-./kafka-scripts.sh check-connector
-```
-
-### 3. Access UIs
-
-- **Kafka UI**: http://localhost:8080
-- **Kafka Connect REST API**: http://localhost:8083
-- **PostgreSQL**: localhost:5432 (postgres/postgres)
-
-## Common Operations
-
-### Insert Test Data
-
-```bash
-# Insert single test record
-./kafka-scripts.sh db-insert-test
-
-# Or connect to database directly
-docker exec -it postgres psql -U postgres -d taxi_db
-```
-
-### Monitor Message Flow
-
-```bash
-# Consume all messages from beginning
-./kafka-scripts.sh consume-trips
-
-# Consume with JSON formatting
-./kafka-scripts.sh consume-formatted
-
-# Monitor consumer lag
-./kafka-scripts.sh monitor-lag
-```
-
-### Restart Connector
-
-```bash
-# Delete and recreate connector
-./kafka-scripts.sh delete-connector
-sleep 5
-./kafka-scripts.sh deploy-connector
-```
-
-## Troubleshooting
-
-### Services Not Starting
-
-```bash
-# Check Docker resources
-docker system df
-docker system prune
-
-# Restart specific service
-docker-compose restart kafka-connect
-```
-
-### Connector Issues
-
-```bash
-# Check connector logs
-docker-compose logs kafka-connect
-
-# Check connector status
-curl -s http://localhost:8083/connectors/taxi-postgres-connector/status | jq '.'
-
-# Check connector config
-curl -s http://localhost:8083/connectors/taxi-postgres-connector/config | jq '.'
-```
-
-### Database Issues
-
-```bash
-# Check PostgreSQL logs
-docker-compose logs postgres
-
-# Check replication slot
-docker exec postgres psql -U postgres -d taxi_db -c "SELECT * FROM pg_replication_slots;"
-
-# Check publication
-docker exec postgres psql -U postgres -d taxi_db -c "SELECT * FROM pg_publication;"
-```
-
-### No Messages in Kafka
-
-```bash
-# Check topic has data
-docker exec kafka kafka-run-class kafka.tools.GetOffsetShell \
-    --broker-list localhost:9092 \
-    --topic lakehouse.trips
-
-# Check consumer groups
-docker exec kafka kafka-consumer-groups \
-    --bootstrap-server localhost:9092 \
-    --list
-```
-
-## Learning Exercises
-
-### Exercise 1: Understanding CDC
-1. Insert a new trip in PostgreSQL
-2. Observe the CDC event in Kafka
-3. Update the trip record
-4. Observe the update event
-
-### Exercise 2: Schema Changes
-1. Add a new column to the trips table
-2. Observe how Debezium handles schema evolution
-3. Insert data with the new column
-
-### Exercise 3: Performance Testing
-1. Increase the data generator batch size
-2. Monitor Kafka lag and throughput
-3. Observe connector performance
-
-### Exercise 4: Error Handling
-1. Stop PostgreSQL temporarily
-2. Observe connector behavior
-3. Restart PostgreSQL and check recovery
-
-## Cleanup
-
-```bash
-# Stop all services
-docker-compose down
-
-# Remove all data (optional)
-docker-compose down -v
-
-# Clean up Docker resources
-docker system prune -f
-```
-
-## Next Steps
-
-After completing Session 1, you should have:
-- Running Kafka cluster with Debezium
-- PostgreSQL with logical replication enabled
-- Real-time data ingestion pipeline
-- Understanding of CDC concepts
-- Monitoring and troubleshooting skills
-
-This foundation will be used in Session 2 for data transformation with Spark and Iceberg.
+---
+*Dự án này được xây dựng nhằm mục đích học tập và nghiên cứu các công nghệ Big Data hiện đại.*

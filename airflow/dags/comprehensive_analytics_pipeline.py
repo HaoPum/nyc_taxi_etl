@@ -96,32 +96,6 @@ check_data_task = PythonOperator(
     dag=dag,
 )
 
-# Comprehensive analytics Spark job
-# comprehensive_analytics_task = BashOperator(
-#     task_id='comprehensive_analytics_transformation',
-#     bash_command='''
-#     docker exec spark-master spark-submit \
-#         --master spark://spark-master:7077 \
-#         --deploy-mode client \
-#         --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
-#         --conf spark.sql.catalog.spark_catalog.type=hive \
-#         --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog \
-#         --conf spark.sql.catalog.iceberg.type=hadoop \
-#         --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse \
-#         --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
-#         --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 \
-#         --conf spark.hadoop.fs.s3a.access.key=admin \
-#         --conf spark.hadoop.fs.s3a.secret.key=password \
-#         --conf spark.hadoop.fs.s3a.path.style.access=true \
-#         --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
-#         --conf spark.sql.adaptive.enabled=true \
-#         --conf spark.sql.adaptive.coalescePartitions.enabled=true \
-#         --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
-#         --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar \
-#         /opt/airflow/dags/spark_jobs/comprehensive_analytics.py
-#     ''',
-#     dag=dag,
-# )
 
 comprehensive_analytics_task = SparkSubmitOperator(
     task_id='comprehensive_analytics_transformation',
@@ -146,32 +120,6 @@ comprehensive_analytics_task = SparkSubmitOperator(
 )
 
 
-# Real-time CDC processing Spark job
-# realtime_cdc_task = BashOperator(
-#     task_id='realtime_cdc_processing',
-#     bash_command='''
-#     docker exec spark-master spark-submit \
-#         --master spark://spark-master:7077 \
-#         --deploy-mode client \
-#         --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
-#         --conf spark.sql.catalog.spark_catalog.type=hive \
-#         --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog \
-#         --conf spark.sql.catalog.iceberg.type=hadoop \
-#         --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse \
-#         --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
-#         --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 \
-#         --conf spark.hadoop.fs.s3a.access.key=admin \
-#         --conf spark.hadoop.fs.s3a.secret.key=password \
-#         --conf spark.hadoop.fs.s3a.path.style.access=true \
-#         --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
-#         --conf spark.sql.adaptive.enabled=true \
-#         --conf spark.sql.streaming.checkpointLocation=s3a://lakehouse/checkpoints/cdc \
-#         --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar \
-#         /opt/airflow/dags/spark_jobs/realtime_cdc_processor.py
-#     ''',
-#     dag=dag,
-# )
-
 realtime_cdc_task = SparkSubmitOperator(
     task_id='realtime_cdc_processing',
     application='/opt/airflow/dags/spark_jobs/realtime_cdc_processor.py',
@@ -194,30 +142,6 @@ realtime_cdc_task = SparkSubmitOperator(
     dag=dag
 )
 
-
-# ML feature engineering task
-# ml_feature_engineering_task = BashOperator(
-#     task_id='ml_feature_engineering',
-#     bash_command='''
-#     docker exec spark-master spark-submit \
-#         --master spark://spark-master:7077 \
-#         --deploy-mode client \
-#         --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
-#         --conf spark.sql.catalog.spark_catalog.type=hive \
-#         --conf spark.sql.catalog.iceberg=org.apache.iceberg.spark.SparkCatalog \
-#         --conf spark.sql.catalog.iceberg.type=hadoop \
-#         --conf spark.sql.catalog.iceberg.warehouse=s3a://lakehouse/warehouse \
-#         --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
-#         --conf spark.hadoop.fs.s3a.endpoint=http://minio:9000 \
-#         --conf spark.hadoop.fs.s3a.access.key=admin \
-#         --conf spark.hadoop.fs.s3a.secret.key=password \
-#         --conf spark.hadoop.fs.s3a.path.style.access=true \
-#         --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
-#         --jars /opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar \
-#         /opt/airflow/dags/spark_jobs/ml_feature_engineering.py
-#     ''',
-#     dag=dag,
-# )
 
 ml_feature_engineering_task = SparkSubmitOperator(
     task_id='ml_feature_engineering',

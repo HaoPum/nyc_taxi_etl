@@ -4,14 +4,15 @@ test_data.py
 test.py
 test_sparkjob.py
 
-idea/
+# IDE / Editor specific
+.idea/
 .vscode/
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyc
 
 # 
 /data/locations/*

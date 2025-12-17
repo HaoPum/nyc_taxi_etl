@@ -1,1 +1,2 @@
-CREATE DATABASE hive_metastore;
+CREATE DATABASE IF NOT EXISTS hive_metastore;
+GRANT ALL PRIVILEGES ON DATABASE hive_metastore TO airflow;
