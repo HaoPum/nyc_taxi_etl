@@ -1,8 +1,8 @@
 # 🚖 End-to-End Data Lakehouse: NYC Taxi Analytics Platform
 
-!Architecture Diagram
-!Status
-!Docker
+![Architecture Diagram](https://img.shields.io/badge/Architecture-Lakehouse-blue)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Docker](https://img.shields.io/badge/Docker-Compose-orange)
 
 ## 📖 Tổng quan (Overview)
 
@@ -67,7 +67,7 @@ Dự án yêu cầu Docker và Docker Compose.
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/your-username/nyc-taxi-lakehouse.git
+git clone https://github.com/HaoPum/nyc_taxi_etl
 cd nyc-taxi-lakehouse
 ```
 
@@ -126,10 +126,10 @@ Dữ liệu sau khi xử lý cho phép trả lời các câu hỏi:
 
 ## 👤 Tác giả
 
-**[Tên của bạn]**
+**Lê Chí Hào**
 *   Data Engineer
-*   Email: [Email của bạn]
-*   LinkedIn: [Link Profile của bạn]
+*   Email: lhao0688@gmail.com
+*   LinkedIn: https://www.linkedin.com/in/hao-le-598a66367/
 
 ---
 *Dự án này được xây dựng nhằm mục đích học tập và nghiên cứu các công nghệ Big Data hiện đại.*
